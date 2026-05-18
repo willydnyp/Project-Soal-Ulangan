@@ -798,43 +798,14 @@ function tampilkanReviewDariData(item, showKunci = false) {
       let pClass = 'review-pilihan';
       let badge  = '';
 
-      if (dataLama) {
-        // ── DATA LAMA: jika showKunci=true (dari halaman hasil), tampilkan kunci
-        //              jika showKunci=false (dari riwayat), tidak tampilkan apapun
-        if (showKunci && j === jb) {
+      // Hanya highlight jawaban user — kunci jawaban tidak ditampilkan sama sekali
+      if (!tidakDijawab && j === jp) {
+        if (jp === jb) {
           pClass += ' pilihan-benar';
-          badge   = '<span class="pilihan-badge badge-benar">✓ Kunci jawaban</span>';
-        }
-
-      } else if (showKunci) {
-        // ── MODE HASIL (showKunci=true): tampilkan jawaban user + kunci jawaban ──
-        if (j === jp && j === jb) {
-          // Jawaban user benar
-          pClass += ' pilihan-benar';
-          badge   = '<span class="pilihan-badge badge-benar">✓ Jawaban kamu (Benar)</span>';
-        } else if (j === jp && j !== jb) {
-          // Jawaban user salah
+          badge   = '<span class="pilihan-badge badge-benar">✓ BENAR!</span>';
+        } else {
           pClass += ' pilihan-salah';
-          badge   = '<span class="pilihan-badge badge-salah">✗ Jawaban kamu (Salah)</span>';
-        } else if (j === jb && j !== jp) {
-          // Kunci jawaban (beda dari jawaban user)
-          pClass += ' pilihan-benar';
-          badge   = '<span class="pilihan-badge badge-benar">✓ Kunci Jawaban</span>';
-        }
-
-      } else {
-        // ── MODE RIWAYAT (showKunci=false): hanya highlight jawaban user, tanpa kunci ──
-        if (!tidakDijawab) {
-          if (j === jp && j === jb) {
-            // Jawaban user benar
-            pClass += ' pilihan-benar';
-            badge   = '<span class="pilihan-badge badge-benar">✓ BENAR!</span>';
-          } else if (j === jp && j !== jb) {
-            // Jawaban user salah — TIDAK tampilkan kunci
-            pClass += ' pilihan-salah';
-            badge   = '<span class="pilihan-badge badge-salah">✗ SALAH!</span>';
-          }
-          // Pilihan lain (termasuk kunci) → tidak diberi warna apapun
+          badge   = '<span class="pilihan-badge badge-salah">✗ SALAH!</span>';
         }
       }
 
