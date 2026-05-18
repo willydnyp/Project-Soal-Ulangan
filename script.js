@@ -121,81 +121,9 @@ const dataSoal = [
 ];
 
 /* ============================================
-   SISTEM TEMA
-   ============================================ */
-const temaList = [
-  {
-    id: 'minecraft',
-    nama: '⛏️ Minecraft',
-    label: 'MINECRAFT'
-  },
-  {
-    id: 'marvel',
-    nama: '🦸 Marvel',
-    label: 'MARVEL'
-  },
-  {
-    id: 'toystory',
-    nama: '🤠 Toy Story',
-    label: 'TOY STORY'
-  },
-  {
-    id: 'japan',
-    nama: '🌸 Japan',
-    label: 'JAPAN'
-  }
-];
-
-const TEMA_KEY = 'minecraft_quiz_tema';
-
-let temaSaat = localStorage.getItem(TEMA_KEY) || 'minecraft';
-
-function terapkanTema(id) {
-  temaSaat = id;
-  localStorage.setItem(TEMA_KEY, id);
-  document.body.className = '';
-  document.body.classList.add('tema-' + id);
-  // Update tombol aktif
-  document.querySelectorAll('.tema-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.tema === id);
-  });
-  // Update background
-  renderBgTema(id);
-  showToast(getTemaToast(id));
-}
-
-function getTemaToast(id) {
-  const map = {
-    minecraft: '⛏️ Tema Minecraft aktif!',
-    marvel:    '🦸 Tema Marvel aktif! Excelsior!',
-    toystory:  '🤠 Tema Toy Story aktif! To infinity!',
-    japan:     '🌸 Tema Japan aktif! いらっしゃいませ!'
-  };
-  return map[id] || 'Tema berganti!';
-}
-
-function renderTemaButtons() {
-  const container = document.getElementById('temaContainer');
-  if (!container) return;
-  container.innerHTML = '';
-  temaList.forEach(tema => {
-    const btn = document.createElement('button');
-    btn.className = 'mc-btn btn-small tema-btn' + (temaSaat === tema.id ? ' active' : '');
-    btn.dataset.tema = tema.id;
-    btn.textContent = tema.nama;
-    btn.addEventListener('click', () => {
-      soundClick();
-      initAudio();
-      terapkanTema(tema.id);
-    });
-    container.appendChild(btn);
-  });
-}
-
-/* ============================================
    KONSTANTA & STATE
    ============================================ */
-const WAKTU_TOTAL   = 30 * 60;
+const WAKTU_TOTAL   = 30 * 60; // 30 menit dalam detik
 const STORAGE_KEY   = 'minecraft_quiz_riwayat';
 const OPSI_HURUF    = ['A', 'B', 'C', 'D', 'E'];
 
@@ -209,7 +137,7 @@ let state = {
   audioOn          : true,
   startTime        : null,
   waktuTerpakai    : 0,
-  snapshotJawaban  : null
+  snapshotJawaban  : null  // disimpan setelah selesai ulangan, dipakai untuk review langsung
 };
 
 /* ============================================
@@ -245,6 +173,7 @@ function soundPilih()    { initAudio(); playTone(659, 0.12, 'square', 0.25); }
 function soundWin()      { initAudio(); [523, 659, 784, 1047, 784, 659, 784, 1047].forEach((n, i) => setTimeout(() => playTone(n, 0.18, 'square', 0.25), i * 110)); }
 function soundError()    { initAudio(); playTone(220, 0.15, 'sawtooth', 0.2); setTimeout(() => playTone(180, 0.2, 'sawtooth', 0.15), 100); }
 
+// Background music
 let bgMusicInterval = null;
 const bgNotes       = [262, 330, 392, 523, 392, 330, 262, 196, 247, 330, 392, 294];
 let bgNoteIndex     = 0;
@@ -283,13 +212,12 @@ function toggleAudio() {
 }
 
 /* ============================================
-   BACKGROUND DINAMIS (berdasarkan tema)
+   BACKGROUND BLOCKS (Dekorasi)
    ============================================ */
-function renderBgTema(id) {
+function generateBgBlocks() {
   const container = document.getElementById('bgBlocks');
-  container.innerHTML = '';
 
-  // Bintang piksel selalu ada
+  // Bintang piksel
   for (let i = 0; i < 50; i++) {
     const star = document.createElement('div');
     star.className = 'pixel-star';
@@ -303,18 +231,7 @@ function renderBgTema(id) {
     container.appendChild(star);
   }
 
-  if (id === 'minecraft') {
-    renderBgMinecraft(container);
-  } else if (id === 'marvel') {
-    renderBgMarvel(container);
-  } else if (id === 'toystory') {
-    renderBgToyStory(container);
-  } else if (id === 'japan') {
-    renderBgJapan(container);
-  }
-}
-
-function renderBgMinecraft(container) {
+  // Blok melayang
   const blockTypes = ['grass', 'stone', 'wood', 'diamond'];
   for (let i = 0; i < 14; i++) {
     const block = document.createElement('div');
@@ -333,77 +250,6 @@ function renderBgMinecraft(container) {
     `;
     container.appendChild(block);
   }
-}
-
-function renderBgMarvel(container) {
-  // Simbol Marvel: bintang, petir, web
-  const simbols = ['⭐', '⚡', '🕷️', '🔴', '💥', '🛡️'];
-  for (let i = 0; i < 16; i++) {
-    const el = document.createElement('div');
-    el.className = 'float-block marvel-symbol';
-    el.textContent = simbols[Math.floor(Math.random() * simbols.length)];
-    const dur   = 10 + Math.random() * 15;
-    const delay = Math.random() * -18;
-    el.style.cssText = `
-      left:${Math.random() * 95}%;
-      animation-duration:${dur}s;
-      animation-delay:${delay}s;
-      font-size:${20 + Math.floor(Math.random() * 3) * 8}px;
-      width:auto; height:auto;
-      background:none; border:none;
-      opacity:0.35;
-    `;
-    container.appendChild(el);
-  }
-}
-
-function renderBgToyStory(container) {
-  const simbols = ['⭐', '🌤️', '🧸', '🎪', '🪀', '🎈'];
-  for (let i = 0; i < 16; i++) {
-    const el = document.createElement('div');
-    el.className = 'float-block';
-    el.textContent = simbols[Math.floor(Math.random() * simbols.length)];
-    const dur   = 10 + Math.random() * 15;
-    const delay = Math.random() * -18;
-    el.style.cssText = `
-      left:${Math.random() * 95}%;
-      animation-duration:${dur}s;
-      animation-delay:${delay}s;
-      font-size:${20 + Math.floor(Math.random() * 3) * 8}px;
-      width:auto; height:auto;
-      background:none; border:none;
-      opacity:0.4;
-    `;
-    container.appendChild(el);
-  }
-}
-
-function renderBgJapan(container) {
-  const simbols = ['🌸', '🍃', '🎋', '⛩️', '🌙', '🍜', '🎑', '🌺'];
-  for (let i = 0; i < 20; i++) {
-    const el = document.createElement('div');
-    el.className = 'float-block japan-petal';
-    el.textContent = simbols[Math.floor(Math.random() * simbols.length)];
-    const dur   = 8 + Math.random() * 14;
-    const delay = Math.random() * -20;
-    el.style.cssText = `
-      left:${Math.random() * 98}%;
-      animation-duration:${dur}s;
-      animation-delay:${delay}s;
-      font-size:${16 + Math.floor(Math.random() * 3) * 6}px;
-      width:auto; height:auto;
-      background:none; border:none;
-      opacity:0.5;
-    `;
-    container.appendChild(el);
-  }
-}
-
-/* ============================================
-   BACKGROUND BLOCKS (Legacy — Minecraft default)
-   ============================================ */
-function generateBgBlocks() {
-  renderBgTema(temaSaat);
 }
 
 /* ============================================
@@ -457,6 +303,7 @@ function mulaiUlangan() {
     return;
   }
 
+  // Reset state
   state.nama          = nama;
   state.kelas         = kelas;
   state.soalIndex     = 0;
@@ -512,8 +359,8 @@ function updateTimerDisplay() {
   el.textContent = `⏱ ${mnt}:${dtk}`;
 
   if (state.timer <= 60)       el.style.color = '#e74c3c';
-  else if (state.timer <= 300) el.style.color = 'var(--theme-accent2, var(--mc-yellow))';
-  else                         el.style.color = 'var(--theme-accent, var(--mc-yellow))';
+  else if (state.timer <= 300) el.style.color = '#f0c030';
+  else                         el.style.color = 'var(--mc-yellow)';
 }
 
 function formatWaktu(detik) {
@@ -521,7 +368,7 @@ function formatWaktu(detik) {
 }
 
 /* ============================================
-   NAVIGASI NOMOR SOAL
+   NAVIGASI NOMOR SOAL (2 kolom)
    ============================================ */
 function renderNavNomor() {
   const container = document.getElementById('soalNav');
@@ -645,17 +492,20 @@ function selesaiUlangan(force = false) {
   stopTimer();
   stopBgMusic();
 
+  // Hitung skor
   let benar = 0;
   dataSoal.forEach((soal, i) => {
     if (state.jawaban[i] === soal.jawaban) benar++;
   });
 
-  const salah    = dataSoal.length - benar;
-  const nilai    = benar * 5;
+  const salah   = dataSoal.length - benar;
+  const nilai   = benar * 5;
   const waktuStr = formatWaktu(state.waktuTerpakai);
 
+  // Simpan snapshot jawaban ke state agar review halaman hasil bisa pakai langsung
   state.snapshotJawaban = [...state.jawaban];
 
+  // Simpan ke riwayat localStorage
   simpanRiwayat({
     nama           : state.nama,
     kelas          : state.kelas,
@@ -680,6 +530,7 @@ function tampilkanHasil(benar, salah, nilai, waktu) {
   document.getElementById('statSalah').textContent   = salah;
   document.getElementById('statWaktu').textContent   = waktu;
 
+  // Animasi counter nilai
   let cur = 0;
   const step    = Math.ceil(nilai / 20);
   const nilaiEl = document.getElementById('nilaiAkhir');
@@ -689,6 +540,7 @@ function tampilkanHasil(benar, salah, nilai, waktu) {
     if (cur >= nilai) clearInterval(iv);
   }, 50);
 
+  // Grade
   const gradeEl = document.getElementById('nilaiGrade');
   let gradeClass, gradeLabel;
   if      (nilai >= 90) { gradeClass = 'grade-A'; gradeLabel = 'Grade A — ⭐ LUAR BIASA!'; }
@@ -727,7 +579,7 @@ function buatFireworks() {
 }
 
 /* ============================================
-   REVIEW
+   REVIEW DARI HALAMAN HASIL (pakai state langsung)
    ============================================ */
 function lihatReviewTerakhir() {
   soundClick();
@@ -735,6 +587,7 @@ function lihatReviewTerakhir() {
     showToast('⚠️ Data jawaban tidak ditemukan.');
     return;
   }
+  // Review dari halaman hasil: tampilkan kunci jawaban (showKunci = true)
   tampilkanReviewDariData({
     nama           : state.nama,
     kelas          : state.kelas,
@@ -742,9 +595,12 @@ function lihatReviewTerakhir() {
     benar          : state.snapshotJawaban.filter((j, i) => j === dataSoal[i].jawaban).length,
     salah          : state.snapshotJawaban.filter((j, i) => j !== dataSoal[i].jawaban).length,
     jawabanPeserta : state.snapshotJawaban
-  }, true);
+  }, true); // <-- showKunci = true
 }
 
+/* ============================================
+   ULANGI & HOME
+   ============================================ */
 function ulangLagi() {
   soundClick();
   state.soalIndex       = 0;
@@ -776,7 +632,7 @@ function kembaliHome() {
    ============================================ */
 function simpanRiwayat(data) {
   const riwayat = ambilRiwayat();
-  riwayat.unshift(data);
+  riwayat.unshift(data); // tambahkan di awal (terbaru di atas)
   localStorage.setItem(STORAGE_KEY, JSON.stringify(riwayat));
 }
 
@@ -861,29 +717,51 @@ function lihatReview(idx) {
   const riwayat = ambilRiwayat();
   const item    = riwayat[idx];
   if (!item) { showToast('⚠️ Data tidak ditemukan.'); return; }
+  // Saat dari riwayat HOME, clear snapshot agar tombol kembali ke HOME
   state.snapshotJawaban = null;
+  // Review dari riwayat: TIDAK tampilkan kunci jawaban (showKunci = false)
   tampilkanReviewDariData(item, false);
 }
 
+/**
+ * Inti render review — menerima objek data langsung.
+ * 
+ * @param {object} item        - Data riwayat/hasil
+ * @param {boolean} showKunci  - true: tampilkan kunci jawaban (dari halaman hasil)
+ *                               false: jangan tampilkan kunci (dari riwayat home)
+ *
+ * MODE showKunci=true (dari halaman hasil):
+ *   - Jawaban benar → hijau + badge "Jawaban kamu (Benar)"
+ *   - Jawaban salah user → merah + badge "Jawaban kamu (Salah)"
+ *   - Kunci jawaban → hijau + badge "Kunci Jawaban" (muncul meski beda dari jawaban user)
+ *
+ * MODE showKunci=false (dari riwayat):
+ *   - Jawaban benar → hijau + badge "✓ BENAR!"
+ *   - Jawaban salah user → merah + badge "✗ SALAH!" (kunci TIDAK ditampilkan)
+ */
 function tampilkanReviewDariData(item, showKunci = false) {
   if (!item) { showToast('⚠️ Data tidak ditemukan.'); return; }
 
+  // Update label tombol kembali sesuai asal halaman
   const labelKembali = state.snapshotJawaban ? '◀ KEMBALI KE HASIL' : '🏠 KEMBALI KE HOME';
   const btnTop = document.getElementById('btnKembaliReviewTop');
   const btnBot = document.getElementById('btnKembaliReviewBot');
   if (btnTop) btnTop.textContent = labelKembali;
   if (btnBot) btnBot.textContent = labelKembali;
 
+  // Fallback jika data lama tidak punya jawabanPeserta
   const jawabanData = item.jawabanPeserta && Array.isArray(item.jawabanPeserta)
     ? item.jawabanPeserta
     : new Array(dataSoal.length).fill(null);
 
   const dataLama = !item.jawabanPeserta || !Array.isArray(item.jawabanPeserta);
 
+  // Hitung ulang benar/salah dari jawabanData (akurat)
   let benarHitung = 0;
   jawabanData.forEach((j, i) => { if (j === dataSoal[i].jawaban) benarHitung++; });
   const salahHitung = dataSoal.length - benarHitung;
 
+  // Isi header
   document.getElementById('reviewNama').textContent  = `👤 ${item.nama}`;
   document.getElementById('reviewKelas').textContent = `🏫 ${item.kelas}`;
   document.getElementById('reviewNilai').textContent = dataLama ? item.nilai : (benarHitung * 5);
@@ -893,6 +771,7 @@ function tampilkanReviewDariData(item, showKunci = false) {
   const container = document.getElementById('reviewSoalList');
   container.innerHTML = '';
 
+  // Banner data lama (hanya jika data memang lama / tidak punya jawabanPeserta)
   if (dataLama) {
     const banner = document.createElement('div');
     banner.className = 'review-banner-lama';
@@ -919,6 +798,7 @@ function tampilkanReviewDariData(item, showKunci = false) {
       let pClass = 'review-pilihan';
       let badge  = '';
 
+      // Hanya highlight jawaban user — kunci jawaban tidak ditampilkan sama sekali
       if (!tidakDijawab && j === jp) {
         if (jp === jb) {
           pClass += ' pilihan-benar';
@@ -955,6 +835,7 @@ function tampilkanReviewDariData(item, showKunci = false) {
 
 function kembaliDariReview() {
   soundClick();
+  // Jika ada snapshotJawaban berarti review dibuka dari halaman hasil
   if (state.snapshotJawaban) {
     showPage('pageResult');
   } else {
@@ -978,15 +859,13 @@ function escapeHTML(str) {
    INISIALISASI
    ============================================ */
 document.addEventListener('DOMContentLoaded', () => {
-  // Terapkan tema tersimpan
-  document.body.classList.add('tema-' + temaSaat);
-
   generateBgBlocks();
-  renderTemaButtons();
   muatRiwayat();
 
+  // Inisialisasi audio saat pertama kali klik
   document.body.addEventListener('click', () => initAudio(), { once: true });
 
+  // Keyboard shortcut form
   document.getElementById('inputNama').addEventListener('keydown', e => {
     if (e.key === 'Enter') document.getElementById('inputKelas').focus();
   });

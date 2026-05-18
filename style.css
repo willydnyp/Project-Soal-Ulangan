@@ -2,12 +2,13 @@
    MINECRAFT QUIZ - style.css
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=VT323&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Bangers&family=Caveat:wght@700&family=Noto+Serif+JP:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
 
 /* ============================================
-   CSS VARIABLES — DEFAULT (Minecraft)
+   CSS VARIABLES
    ============================================ */
 :root {
+  /* Warna utama */
   --mc-green:        #5aac44;
   --mc-green-dark:   #3d8c2e;
   --mc-green-light:  #7ed461;
@@ -30,31 +31,16 @@
   --mc-grass-top:    #55a03c;
   --mc-dirt:         #8b6340;
 
-  /* TEMA VARIABLES — dioverride tiap tema */
-  --theme-bg-start:    #1a3a5c;
-  --theme-bg-end:      #0d0d0d;
-  --theme-accent:      #f0c030;
-  --theme-accent2:     #7ed461;
-  --theme-card-bg:     #5c5c5c;
-  --theme-card-border: #8b8b8b;
-  --theme-header-from: #3d8c2e;
-  --theme-header-to:   #5aac44;
-  --theme-title-color: #7ed461;
-  --theme-title-sub:   #f0c030;
-  --theme-btn-primary: #5aac44;
-  --theme-ground-color:#55a03c;
-  --theme-ground2:     #8b6340;
-  --theme-font-pixel:  'VT323', monospace;
-  --theme-font-ui:     'Rajdhani', sans-serif;
-  --theme-font-mono:   'Share Tech Mono', monospace;
-
+  /* Efek */
   --shadow-pixel: 4px 4px 0px #000000;
   --border-pixel: 3px solid #000;
 
-  --font-pixel: var(--theme-font-pixel);
-  --font-ui:    var(--theme-font-ui);
-  --font-mono:  var(--theme-font-mono);
+  /* Font */
+  --font-pixel: 'VT323', monospace;
+  --font-ui:    'Rajdhani', sans-serif;
+  --font-mono:  'Share Tech Mono', monospace;
 
+  /* Animasi */
   --dur-fast:    0.25s;
   --dur-mid:     0.45s;
   --dur-slow:    0.65s;
@@ -62,247 +48,6 @@
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
-
-/* ============================================
-   TEMA MARVEL
-   ============================================ */
-body.tema-marvel {
-  --theme-bg-start:    #0a0010;
-  --theme-bg-end:      #1a0000;
-  --theme-accent:      #e8c020;
-  --theme-accent2:     #e62020;
-  --theme-card-bg:     #1e0a0a;
-  --theme-card-border: #8b0000;
-  --theme-header-from: #8b0000;
-  --theme-header-to:   #cc1111;
-  --theme-title-color: #e8c020;
-  --theme-title-sub:   #cc1111;
-  --theme-btn-primary: #cc1111;
-  --theme-ground-color:#2a0000;
-  --theme-ground2:     #1a0000;
-  --theme-font-pixel:  'Bangers', cursive;
-  --theme-font-ui:     'Rajdhani', sans-serif;
-  --theme-font-mono:   'Share Tech Mono', monospace;
-
-  --mc-green:       #cc1111;
-  --mc-green-dark:  #8b0000;
-  --mc-green-light: #e8c020;
-  --mc-green-glow:  #cc111155;
-  --mc-brown:       #8b0000;
-  --mc-brown-dark:  #5a0000;
-  --mc-brown-light: #b01010;
-  --mc-stone:       #4a1a1a;
-  --mc-stone-dark:  #2a0a0a;
-  --mc-stone-light: #8b4444;
-  --mc-dark:        #0a0010;
-  --mc-yellow:      #e8c020;
-  --mc-red:         #cc1111;
-  --mc-red-dark:    #8b0000;
-  --mc-blue:        #1a44cc;
-  --mc-blue-dark:   #0a2a8b;
-  --mc-blue-light:  #4466ee;
-}
-
-body.tema-marvel .bg-blocks {
-  background: linear-gradient(180deg, #0a0010 0%, #1a0000 40%, #000000 100%) !important;
-}
-body.tema-marvel .bg-blocks::before {
-  background: repeating-linear-gradient(
-    90deg, #2a0000 0px, #2a0000 63px, #1a0000 63px, #1a0000 64px
-  ) !important;
-  border-top-color: #8b0000 !important;
-}
-body.tema-marvel .bg-blocks::after {
-  background: repeating-linear-gradient(
-    90deg, #1a0000 0px, #1a0000 63px, #0a0000 63px, #0a0000 64px
-  ) !important;
-  border-top-color: #5a0000 !important;
-}
-body.tema-marvel .game-title { color: #e8c020 !important; text-shadow: 4px 4px 0px #000, 0 0 24px rgba(204,17,17,0.6) !important; }
-body.tema-marvel .game-title span { color: #cc1111 !important; }
-body.tema-marvel .card-header { background: linear-gradient(90deg, #8b0000, #cc1111) !important; }
-body.tema-marvel .game-subtitle { color: #8b4444 !important; }
-body.tema-marvel .pixel-star { background: #e8c020 !important; }
-body.tema-marvel .form-group label { color: #e8c020 !important; }
-body.tema-marvel .history-nama { color: #e8c020 !important; }
-
-/* ============================================
-   TEMA TOY STORY
-   ============================================ */
-body.tema-toystory {
-  --theme-bg-start:    #87ceeb;
-  --theme-bg-end:      #fffacd;
-  --theme-accent:      #ffd700;
-  --theme-accent2:     #4169e1;
-  --theme-card-bg:     #e8f4f8;
-  --theme-card-border: #4169e1;
-  --theme-header-from: #1a3a8a;
-  --theme-header-to:   #4169e1;
-  --theme-title-color: #ffd700;
-  --theme-title-sub:   #cc3300;
-  --theme-btn-primary: #4169e1;
-  --theme-ground-color:#228b22;
-  --theme-ground2:     #8b4513;
-  --theme-font-pixel:  'Bangers', cursive;
-  --theme-font-ui:     'Rajdhani', sans-serif;
-  --theme-font-mono:   'Share Tech Mono', monospace;
-
-  --mc-green:       #4169e1;
-  --mc-green-dark:  #1a3a8a;
-  --mc-green-light: #ffd700;
-  --mc-green-glow:  #4169e155;
-  --mc-brown:       #8b4513;
-  --mc-brown-dark:  #5a2d0a;
-  --mc-brown-light: #a0622a;
-  --mc-stone:       #b0c4de;
-  --mc-stone-dark:  #4a6080;
-  --mc-stone-light: #d0e0f0;
-  --mc-dark:        #1a2a6a;
-  --mc-yellow:      #ffd700;
-  --mc-red:         #cc3300;
-  --mc-red-dark:    #8b2200;
-  --mc-blue:        #4169e1;
-  --mc-blue-dark:   #1a3a8a;
-  --mc-blue-light:  #6a8ae8;
-}
-
-body.tema-toystory .bg-blocks {
-  background: linear-gradient(180deg, #87ceeb 0%, #b0e0ff 35%, #fffacd 70%, #87ceeb 100%) !important;
-}
-body.tema-toystory .bg-blocks::before {
-  background: repeating-linear-gradient(
-    90deg, #32cd32 0px, #32cd32 63px, #228b22 63px, #228b22 64px
-  ) !important;
-  border-top-color: #006400 !important;
-}
-body.tema-toystory .bg-blocks::after {
-  background: repeating-linear-gradient(
-    90deg, #8b4513 0px, #8b4513 63px, #6b3410 63px, #6b3410 64px
-  ) !important;
-  border-top-color: #5a2d0a !important;
-}
-body.tema-toystory .pixel-star { background: #ffd700 !important; }
-body.tema-toystory .game-title { color: #ffd700 !important; text-shadow: 4px 4px 0px #8b4513, 0 0 24px rgba(65,105,225,0.4) !important; }
-body.tema-toystory .game-title span { color: #cc3300 !important; }
-body.tema-toystory .card-header { background: linear-gradient(90deg, #1a3a8a, #4169e1) !important; }
-body.tema-toystory .mc-card { background: #1a2a6a !important; border-top-color: #4169e1 !important; border-left-color: #4169e1 !important; }
-body.tema-toystory .game-subtitle { color: #4a6a9a !important; }
-body.tema-toystory .form-group label { color: #ffd700 !important; }
-body.tema-toystory .history-nama { color: #ffd700 !important; }
-body.tema-toystory .soal-text { color: #ddeeff !important; }
-body.tema-toystory .jawaban-text { color: #ddeeff !important; }
-body.tema-toystory .mc-card { border-top-color: #6a8ae8 !important; border-left-color: #6a8ae8 !important; }
-body.tema-toystory .title-icon { filter: drop-shadow(0 0 10px #ffd700) !important; }
-
-/* ============================================
-   TEMA JAPAN
-   ============================================ */
-body.tema-japan {
-  --theme-bg-start:    #1a0a1e;
-  --theme-bg-end:      #0a1428;
-  --theme-accent:      #ff6b8a;
-  --theme-accent2:     #ffd4e0;
-  --theme-card-bg:     #1e0a28;
-  --theme-card-border: #8b2a5a;
-  --theme-header-from: #6b0a3a;
-  --theme-header-to:   #c0306a;
-  --theme-title-color: #ffd4e0;
-  --theme-title-sub:   #ff6b8a;
-  --theme-btn-primary: #c0306a;
-  --theme-ground-color:#4a0a2a;
-  --theme-ground2:     #2a0a1a;
-  --theme-font-pixel:  'Noto Serif JP', serif;
-  --theme-font-ui:     'Noto Serif JP', serif;
-  --theme-font-mono:   'Share Tech Mono', monospace;
-
-  --mc-green:       #c0306a;
-  --mc-green-dark:  #8b1a4a;
-  --mc-green-light: #ff6b8a;
-  --mc-green-glow:  #c0306a55;
-  --mc-brown:       #6b0a3a;
-  --mc-brown-dark:  #4a0a28;
-  --mc-brown-light: #8b2a5a;
-  --mc-stone:       #4a2a5a;
-  --mc-stone-dark:  #2a1a3a;
-  --mc-stone-light: #8a5a8a;
-  --mc-dark:        #1a0a1e;
-  --mc-yellow:      #ffd4e0;
-  --mc-red:         #c0306a;
-  --mc-red-dark:    #8b1a4a;
-  --mc-blue:        #4a4a8a;
-  --mc-blue-dark:   #2a2a5a;
-  --mc-blue-light:  #8a8acc;
-}
-
-body.tema-japan .bg-blocks {
-  background: linear-gradient(180deg, #1a0a1e 0%, #0a1428 40%, #000000 100%) !important;
-}
-body.tema-japan .bg-blocks::before {
-  background: repeating-linear-gradient(
-    90deg, #4a0a2a 0px, #4a0a2a 63px, #3a0820 63px, #3a0820 64px
-  ) !important;
-  border-top-color: #8b1a4a !important;
-}
-body.tema-japan .bg-blocks::after {
-  background: repeating-linear-gradient(
-    90deg, #2a0a1a 0px, #2a0a1a 63px, #1a0810 63px, #1a0810 64px
-  ) !important;
-  border-top-color: #6b0a3a !important;
-}
-body.tema-japan .pixel-star { background: #ff6b8a !important; }
-body.tema-japan .game-title { color: #ffd4e0 !important; text-shadow: 4px 4px 0px #000, 0 0 24px rgba(192,48,106,0.6) !important; font-family: 'Noto Serif JP', serif !important; font-size: clamp(24px, 6vw, 44px) !important; }
-body.tema-japan .game-title span { color: #ff6b8a !important; }
-body.tema-japan .card-header { background: linear-gradient(90deg, #6b0a3a, #c0306a) !important; font-family: 'Noto Serif JP', serif !important; font-size: 16px !important; }
-body.tema-japan .game-subtitle { color: #8a5a8a !important; }
-body.tema-japan .form-group label { color: #ff6b8a !important; }
-body.tema-japan .history-nama { color: #ff6b8a !important; }
-body.tema-japan .soal-number { color: #ff6b8a !important; }
-body.tema-japan .title-icon { filter: drop-shadow(0 0 10px #ff6b8a) !important; }
-
-/* ============================================
-   TOMBOL TEMA
-   ============================================ */
-.tema-card { }
-
-.tema-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 14px 16px;
-}
-
-.tema-btn {
-  font-family: var(--font-ui) !important;
-  font-size: 14px !important;
-  letter-spacing: 1px;
-  padding: 8px 14px !important;
-  background: rgba(0,0,0,0.3);
-  color: var(--mc-stone-light);
-  border: 2px solid var(--mc-stone);
-  cursor: pointer;
-  transition: all 0.18s ease;
-  flex: 1 1 auto;
-  min-width: 100px;
-  text-align: center;
-}
-.tema-btn:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: var(--mc-green-light);
-  color: var(--mc-white);
-  transform: translateY(-2px);
-}
-.tema-btn.active {
-  background: var(--mc-green-dark);
-  border-color: var(--mc-green-light);
-  color: #fff;
-  box-shadow: 0 0 8px var(--mc-green-glow);
-  transform: scale(1.04);
-}
-
-/* Override tema-btn style per tema */
-body.tema-marvel .tema-btn.active { background: #8b0000 !important; border-color: #e8c020 !important; box-shadow: 0 0 8px rgba(204,17,17,0.5) !important; }
-body.tema-toystory .tema-btn.active { background: #1a3a8a !important; border-color: #ffd700 !important; box-shadow: 0 0 8px rgba(65,105,225,0.5) !important; }
-body.tema-japan .tema-btn.active { background: #6b0a3a !important; border-color: #ff6b8a !important; box-shadow: 0 0 8px rgba(192,48,106,0.5) !important; }
 
 /* ============================================
    RESET & BASE
@@ -334,9 +79,10 @@ body {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background: linear-gradient(180deg, var(--theme-bg-start, #1a3a5c) 0%, #1e4d7a 25%, #0d0d0d 60%, #111 100%);
+  background: linear-gradient(180deg, #1a3a5c 0%, #1e4d7a 25%, #0d0d0d 60%, #111 100%);
 }
 
+/* Tanah rumput */
 .bg-blocks::before {
   content: '';
   position: absolute;
@@ -344,12 +90,13 @@ body {
   width: 100%; height: 80px;
   background: repeating-linear-gradient(
     90deg,
-    var(--mc-grass-top, #55a03c) 0px, var(--mc-grass-top, #55a03c) 63px,
+    var(--mc-grass-top) 0px, var(--mc-grass-top) 63px,
     #3a8a2a 63px, #3a8a2a 64px
   );
   border-top: 4px solid #2d6e1f;
 }
 
+/* Tanah coklat */
 .bg-blocks::after {
   content: '';
   position: absolute;
@@ -357,12 +104,13 @@ body {
   width: 100%; height: 60px;
   background: repeating-linear-gradient(
     90deg,
-    var(--mc-dirt, #8b6340) 0px, var(--mc-dirt, #8b6340) 63px,
+    var(--mc-dirt) 0px, var(--mc-dirt) 63px,
     #7a5530 63px, #7a5530 64px
   );
   border-top: 4px solid #5a3a1a;
 }
 
+/* Bintang piksel */
 .pixel-star {
   position: absolute;
   width: 4px; height: 4px;
@@ -375,6 +123,7 @@ body {
   100% { opacity: 1;    transform: scale(1.2); }
 }
 
+/* Blok melayang */
 .float-block {
   position: absolute;
   width: 32px; height: 32px;
@@ -419,7 +168,7 @@ body {
 }
 
 /* ============================================
-   MC-CARD
+   MC-CARD (komponen kartu utama)
    ============================================ */
 .mc-card {
   background: var(--mc-stone-dark);
@@ -510,6 +259,7 @@ body {
   100% { transform: translateY(0);    opacity: 1; }
 }
 
+/* Form input */
 .form-group { padding: 10px 20px 4px 20px; }
 
 .form-group label {
@@ -570,6 +320,7 @@ body {
   transition: transform 0.15s var(--ease-out), box-shadow 0.15s ease, background 0.15s ease;
 }
 
+/* Hijau */
 .btn-green {
   background: var(--mc-green);
   color: #fff;
@@ -583,6 +334,7 @@ body {
 .btn-green:hover  { background: var(--mc-green-light); transform: translateY(-3px); box-shadow: 0 6px 0 #000; }
 .btn-green:active { transform: translateY(2px); box-shadow: 1px 1px 0 #000; }
 
+/* Coklat */
 .btn-brown {
   background: var(--mc-brown);
   color: #f0c090;
@@ -596,6 +348,7 @@ body {
 .btn-brown:hover  { background: var(--mc-brown-light); transform: translateY(-3px); box-shadow: 0 6px 0 #000; }
 .btn-brown:active { transform: translateY(2px); box-shadow: 1px 1px 0 #000; }
 
+/* Emas */
 .btn-gold {
   background: var(--mc-yellow);
   color: #5a3a00;
@@ -609,6 +362,7 @@ body {
 .btn-gold:hover  { background: #f5d030; transform: translateY(-3px); box-shadow: 0 6px 0 #000; }
 .btn-gold:active { transform: translateY(2px); box-shadow: 1px 1px 0 #000; }
 
+/* Merah */
 .btn-red {
   background: var(--mc-red);
   color: #fff;
@@ -622,6 +376,7 @@ body {
 .btn-red:hover  { background: #e74c3c; transform: translateY(-3px); box-shadow: 0 6px 0 #000; }
 .btn-red:active { transform: translateY(2px); box-shadow: 1px 1px 0 #000; }
 
+/* Biru */
 .btn-blue {
   background: var(--mc-blue);
   color: #fff;
@@ -635,6 +390,7 @@ body {
 .btn-blue:hover  { background: var(--mc-blue-light); transform: translateY(-3px); box-shadow: 0 6px 0 #000; }
 .btn-blue:active { transform: translateY(2px); box-shadow: 1px 1px 0 #000; }
 
+/* Ukuran kecil */
 .btn-small {
   font-family: var(--font-ui);
   font-weight: 700;
@@ -643,6 +399,7 @@ body {
   padding: 6px 12px;
 }
 
+/* Tombol mulai (full width) */
 #btnMulai {
   width: calc(100% - 40px);
   margin: 14px 20px 20px;
@@ -741,7 +498,7 @@ body {
 .quiz-main { flex: 1; min-width: 0; }
 
 /* ============================================
-   SIDEBAR NAVIGASI
+   SIDEBAR NAVIGASI (2 kolom: 1-10 kiri, 11-20 kanan)
    ============================================ */
 .nav-card {
   width: 148px;
@@ -973,6 +730,7 @@ body {
 .review-score-box.box-benar { color: var(--mc-green-light); border-color: var(--mc-green); }
 .review-score-box.box-salah { color: #e74c3c;               border-color: #e74c3c; }
 
+/* Kartu tiap soal di review */
 .review-soal-item {
   margin-bottom: 12px;
   border: 3px solid;
@@ -994,6 +752,7 @@ body {
   background: rgba(122, 26, 14, 0.18);
 }
 
+/* Data lama tanpa jawaban tercatat */
 .review-tidak-dijawab {
   border-color:       var(--mc-stone);
   border-top-color:   var(--mc-stone-light);
@@ -1001,6 +760,7 @@ body {
   background: rgba(139, 139, 139, 0.10);
 }
 
+/* Banner peringatan data lama */
 .review-banner-lama {
   font-family: var(--font-ui);
   font-size: 14px;
@@ -1059,6 +819,7 @@ body {
   flex-wrap: wrap;
 }
 
+/* ── Jawaban BENAR = latar hijau solid ── */
 .pilihan-benar {
   background:        #2d6e1f !important;
   border:            3px solid #7ed461 !important;
@@ -1070,6 +831,7 @@ body {
 .pilihan-benar .review-pilihan-key  { color: #c8ffb0 !important; }
 .pilihan-benar .review-pilihan-text { color: #e8ffe0 !important; font-weight: 700 !important; }
 
+/* ── Jawaban peserta SALAH = latar merah solid ── */
 .pilihan-salah {
   background:        #7a1a0e !important;
   border:            3px solid #e74c3c !important;
@@ -1183,9 +945,6 @@ body {
   .pilihan-badge   { font-size: 10px; padding: 1px 5px; }
 
   .result-btns .mc-btn { min-width: 80px; flex: 1 1 80px; font-size: 17px; }
-
-  .tema-buttons { gap: 6px; }
-  .tema-btn     { font-size: 13px !important; padding: 6px 10px !important; }
 }
 
 /* ============================================
