@@ -3,63 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Multi-Tema Quiz 🎮</title>
+  <title>MineCraft Quiz ⛏️</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div class="bg-layer" id="bgLayer"></div>
-
-  <!-- ============================
-       HALAMAN PILIH TEMA
-  ============================= -->
-  <div class="page active" id="pageTheme">
-    <div class="theme-container">
-      <div class="main-title-block">
-        <h1 class="main-title" id="mainTitle">QUIZ CHALLENGE</h1>
-        <p class="main-subtitle">Pilih tema favoritmu!</p>
-      </div>
-      <div class="theme-grid">
-        <div class="theme-card" data-theme="minecraft" onclick="pilihTema('minecraft')">
-          <div class="theme-icon">⛏️</div>
-          <div class="theme-name">MINECRAFT</div>
-          <div class="theme-desc">HTML, CSS & JavaScript</div>
-          <div class="theme-badge">20 Soal</div>
-        </div>
-        <div class="theme-card" data-theme="lego" onclick="pilihTema('lego')">
-          <div class="theme-icon">🧱</div>
-          <div class="theme-name">LEGO</div>
-          <div class="theme-desc">Dunia Balok & Kreasi</div>
-          <div class="theme-badge">20 Soal</div>
-        </div>
-        <div class="theme-card" data-theme="toystory" onclick="pilihTema('toystory')">
-          <div class="theme-icon">🤠</div>
-          <div class="theme-name">TOY STORY</div>
-          <div class="theme-desc">Karakter & Cerita Film</div>
-          <div class="theme-badge">20 Soal</div>
-        </div>
-        <div class="theme-card" data-theme="marvel" onclick="pilihTema('marvel')">
-          <div class="theme-icon">🦸</div>
-          <div class="theme-name">MARVEL</div>
-          <div class="theme-desc">Superhero & Universe</div>
-          <div class="theme-badge">20 Soal</div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Background animasi -->
+  <div class="bg-blocks" id="bgBlocks"></div>
 
   <!-- ============================
        HALAMAN HOME
   ============================= -->
-  <div class="page" id="pageHome">
+  <div class="page active" id="pageHome">
     <div class="home-container">
+
       <div class="title-block">
-        <div class="title-icon" id="homeIcon">⛏️</div>
-        <h1 class="game-title" id="gameTitle">MINECRAFT QUIZ</h1>
-        <p class="game-subtitle" id="gameSubtitle">[ Uji Pengetahuanmu! ]</p>
+        <div class="title-icon">⛏️</div>
+        <h1 class="game-title">MINECRAFT<br><span>QUIZ</span></h1>
+        <p class="game-subtitle">[ Uji Pengetahuanmu! ]</p>
       </div>
+
       <div class="mc-card form-card">
-        <div class="card-header" id="formHeader">📋 DATA PESERTA</div>
+        <div class="card-header">📋 DATA PESERTA</div>
         <div class="form-group">
           <label for="inputNama">👤 Nama / Username</label>
           <input type="text" id="inputNama" placeholder="Masukkan namamu..." maxlength="30" />
@@ -68,19 +33,27 @@
           <label for="inputKelas">🏫 Kelas</label>
           <input type="text" id="inputKelas" placeholder="Contoh: X-IPA-1..." maxlength="20" />
         </div>
-        <button class="mc-btn btn-primary" id="btnMulai" onclick="mulaiUlangan()">▶ MULAI ULANGAN</button>
+        <button class="mc-btn btn-green" id="btnMulai" onclick="mulaiUlangan()">
+          ▶ MULAI ULANGAN
+        </button>
       </div>
-      <div class="action-row">
-        <button class="mc-btn btn-small btn-secondary" id="btnAudio" onclick="toggleAudio()">🔊 SUARA: ON</button>
-        <button class="mc-btn btn-small btn-secondary" onclick="kembaliPilihTema()">🔄 GANTI TEMA</button>
+
+      <div class="audio-controls">
+        <button class="mc-btn btn-small btn-brown" id="btnAudio" onclick="toggleAudio()">
+          🔊 SUARA: ON
+        </button>
       </div>
+
       <div class="mc-card history-card" id="historyCard">
-        <div class="card-header" id="historyHeader">📜 RIWAYAT NILAI</div>
-        <div id="historyList"><p class="empty-msg">Belum ada data riwayat.</p></div>
+        <div class="card-header">📜 RIWAYAT NILAI</div>
+        <div id="historyList">
+          <p class="empty-msg">Belum ada data riwayat.</p>
+        </div>
         <div class="history-actions" id="historyActions" style="display:none">
-          <button class="mc-btn btn-small btn-danger" onclick="hapusSemua()">🗑️ Hapus Semua</button>
+          <button class="mc-btn btn-small btn-red" onclick="hapusSemua()">🗑️ Hapus Semua</button>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -89,34 +62,41 @@
   ============================= -->
   <div class="page" id="pageQuiz">
     <div class="quiz-container">
+
       <div class="quiz-topbar">
         <div class="quiz-info">
           <span id="quizNama">👤 Player</span>
           <span id="quizKelas">🏫 Kelas</span>
-          <span class="theme-chip" id="quizThemeChip">⛏️ Minecraft</span>
         </div>
         <div class="quiz-timer" id="quizTimer">⏱ 00:00</div>
       </div>
+
       <div class="quiz-body">
+
         <div class="quiz-main">
           <div class="mc-card soal-card">
             <div class="soal-header">
               <span class="soal-number" id="soalNumber">Soal 1 / 20</span>
-              <span class="soal-badge" id="soalBadge">❓</span>
+              <span class="soal-badge">❓</span>
             </div>
             <div class="soal-text" id="soalText">Loading...</div>
             <div class="jawaban-list" id="jawabanList"></div>
           </div>
+
           <div class="quiz-nav-btns">
-            <button class="mc-btn btn-secondary" id="btnPrev" onclick="prevSoal()">◀ SEBELUMNYA</button>
-            <button class="mc-btn btn-primary" id="btnNext" onclick="nextSoal()">SELANJUTNYA ▶</button>
-            <button class="mc-btn btn-gold" id="btnSelesai" onclick="selesaiUlangan()" style="display:none">✅ SELESAI</button>
+            <button class="mc-btn btn-brown" id="btnPrev" onclick="prevSoal()">◀ SEBELUMNYA</button>
+            <button class="mc-btn btn-green" id="btnNext" onclick="nextSoal()">SELANJUTNYA ▶</button>
+            <button class="mc-btn btn-gold" id="btnSelesai" onclick="selesaiUlangan()" style="display:none">
+              ✅ SELESAI ULANGAN
+            </button>
           </div>
         </div>
+
         <div class="mc-card nav-card">
           <div class="card-header">📌 SOAL</div>
           <div class="soal-nav" id="soalNav"></div>
         </div>
+
       </div>
     </div>
   </div>
@@ -126,16 +106,17 @@
   ============================= -->
   <div class="page" id="pageResult">
     <div class="result-container">
-      <div class="win-animation">
-        <div class="win-icon" id="winIcon">🏆</div>
+
+      <div class="win-animation" id="winAnim">
+        <div class="win-icon">🏆</div>
         <div class="fireworks" id="fireworks"></div>
       </div>
+
       <div class="mc-card result-card">
-        <div class="card-header" id="resultHeader">🎉 HASIL ULANGAN</div>
+        <div class="card-header">🎉 HASIL ULANGAN</div>
         <div class="result-info">
           <div class="result-nama" id="resultNama">Player</div>
           <div class="result-kelas" id="resultKelas">Kelas</div>
-          <div class="result-theme-badge" id="resultThemeBadge">Minecraft</div>
         </div>
         <div class="result-stats">
           <div class="stat-box stat-green">
@@ -160,19 +141,21 @@
           <div class="nilai-grade" id="nilaiGrade">-</div>
         </div>
         <div class="result-btns">
-          <button class="mc-btn btn-blue" onclick="lihatReviewTerakhir()">🔍 REVIEW</button>
-          <button class="mc-btn btn-primary" onclick="ulangLagi()">🔄 ULANGI</button>
-          <button class="mc-btn btn-secondary" onclick="kembaliHome()">🏠 HOME</button>
+          <button class="mc-btn btn-blue" id="btnReviewHasil" onclick="lihatReviewTerakhir()">🔍 REVIEW</button>
+          <button class="mc-btn btn-green" onclick="ulangLagi()">🔄 ULANGI</button>
+          <button class="mc-btn btn-brown" onclick="kembaliHome()">🏠 HOME</button>
         </div>
       </div>
+
     </div>
   </div>
 
   <!-- ============================
-       HALAMAN REVIEW
+       HALAMAN REVIEW JAWABAN
   ============================= -->
   <div class="page" id="pageReview">
     <div class="review-container">
+
       <div class="review-topbar">
         <div class="review-summary">
           <div class="review-summary-info">
@@ -184,15 +167,19 @@
             <div class="review-score-box box-salah">❌ Salah: <span id="reviewSalah">0</span></div>
           </div>
         </div>
-        <button class="mc-btn btn-small btn-secondary" id="btnKembaliReviewTop" onclick="kembaliDariReview()">◀ KEMBALI</button>
+        <button class="mc-btn btn-small btn-brown" id="btnKembaliReviewTop" onclick="kembaliDariReview()">◀ KEMBALI</button>
       </div>
+
       <div class="mc-card" style="margin-bottom:14px;">
-        <div class="card-header">🔍 REVIEW — Hijau = Benar | Merah = Salah</div>
+        <div class="card-header">🔍 REVIEW JAWABAN — Hijau = Benar &nbsp;|&nbsp; Merah = Salah</div>
       </div>
+
       <div id="reviewSoalList"></div>
+
       <div style="text-align:center; padding-bottom: 20px;">
-        <button class="mc-btn btn-secondary" id="btnKembaliReviewBot" onclick="kembaliDariReview()">◀ KEMBALI</button>
+        <button class="mc-btn btn-brown" id="btnKembaliReviewBot" onclick="kembaliDariReview()">◀ KEMBALI</button>
       </div>
+
     </div>
   </div>
 
