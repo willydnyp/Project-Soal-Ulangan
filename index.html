@@ -3,13 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MineCraft Quiz ⛏️</title>
+  <title>Toy Story Quiz 🤠</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- Background animasi -->
-  <div class="bg-blocks" id="bgBlocks"></div>
+  <div class="bg-scene" id="bgScene">
+    <div class="sky-gradient"></div>
+    <div class="clouds-layer" id="cloudsLayer"></div>
+    <div class="wallpaper-pattern"></div>
+    <div class="floating-toys" id="floatingToys"></div>
+    <div class="ground-bar"></div>
+  </div>
 
   <!-- ============================
        HALAMAN HOME
@@ -18,39 +27,50 @@
     <div class="home-container">
 
       <div class="title-block">
-        <div class="title-icon">⛏️</div>
-        <h1 class="game-title">MINECRAFT<br><span>QUIZ</span></h1>
-        <p class="game-subtitle">[ Uji Pengetahuanmu! ]</p>
+        <div class="title-characters">
+          <span class="char woody">🤠</span>
+          <span class="char buzz">🚀</span>
+          <span class="char rex">🦕</span>
+        </div>
+        <h1 class="game-title">
+          <span class="title-line1">TOY STORY</span>
+          <span class="title-line2">QUIZ</span>
+        </h1>
+        <p class="game-subtitle">— Reach for the sky, cowboy! —</p>
       </div>
 
-      <div class="mc-card form-card">
-        <div class="card-header">📋 DATA PESERTA</div>
+      <div class="ts-card form-card">
+        <div class="card-header">
+          <span class="header-icon">📋</span> DATA PESERTA
+        </div>
         <div class="form-group">
-          <label for="inputNama">👤 Nama / Username</label>
-          <input type="text" id="inputNama" placeholder="Masukkan namamu..." maxlength="30" />
+          <label for="inputNama">🤠 Nama / Username</label>
+          <input type="text" id="inputNama" placeholder="Siapa nama cowboy-mu?" maxlength="30" />
         </div>
         <div class="form-group">
           <label for="inputKelas">🏫 Kelas</label>
           <input type="text" id="inputKelas" placeholder="Contoh: X-IPA-1..." maxlength="20" />
         </div>
-        <button class="mc-btn btn-green" id="btnMulai" onclick="mulaiUlangan()">
-          ▶ MULAI ULANGAN
+        <button class="ts-btn btn-woody" id="btnMulai" onclick="mulaiUlangan()">
+          🤠 MULAI PETUALANGAN!
         </button>
       </div>
 
       <div class="audio-controls">
-        <button class="mc-btn btn-small btn-brown" id="btnAudio" onclick="toggleAudio()">
+        <button class="ts-btn btn-small btn-buzz" id="btnAudio" onclick="toggleAudio()">
           🔊 SUARA: ON
         </button>
       </div>
 
-      <div class="mc-card history-card" id="historyCard">
-        <div class="card-header">📜 RIWAYAT NILAI</div>
+      <div class="ts-card history-card" id="historyCard">
+        <div class="card-header">
+          <span class="header-icon">📜</span> RIWAYAT NILAI
+        </div>
         <div id="historyList">
-          <p class="empty-msg">Belum ada data riwayat.</p>
+          <p class="empty-msg">Belum ada data riwayat, cowboy.</p>
         </div>
         <div class="history-actions" id="historyActions" style="display:none">
-          <button class="mc-btn btn-small btn-red" onclick="hapusSemua()">🗑️ Hapus Semua</button>
+          <button class="ts-btn btn-small btn-red" onclick="hapusSemua()">🗑️ Hapus Semua</button>
         </div>
       </div>
 
@@ -65,7 +85,7 @@
 
       <div class="quiz-topbar">
         <div class="quiz-info">
-          <span id="quizNama">👤 Player</span>
+          <span id="quizNama">🤠 Woody</span>
           <span id="quizKelas">🏫 Kelas</span>
         </div>
         <div class="quiz-timer" id="quizTimer">⏱ 00:00</div>
@@ -74,26 +94,26 @@
       <div class="quiz-body">
 
         <div class="quiz-main">
-          <div class="mc-card soal-card">
+          <div class="ts-card soal-card">
             <div class="soal-header">
               <span class="soal-number" id="soalNumber">Soal 1 / 20</span>
-              <span class="soal-badge">❓</span>
+              <span class="soal-badge">🌟</span>
             </div>
             <div class="soal-text" id="soalText">Loading...</div>
             <div class="jawaban-list" id="jawabanList"></div>
           </div>
 
           <div class="quiz-nav-btns">
-            <button class="mc-btn btn-brown" id="btnPrev" onclick="prevSoal()">◀ SEBELUMNYA</button>
-            <button class="mc-btn btn-green" id="btnNext" onclick="nextSoal()">SELANJUTNYA ▶</button>
-            <button class="mc-btn btn-gold" id="btnSelesai" onclick="selesaiUlangan()" style="display:none">
+            <button class="ts-btn btn-brown" id="btnPrev" onclick="prevSoal()">◀ SEBELUMNYA</button>
+            <button class="ts-btn btn-woody" id="btnNext" onclick="nextSoal()">SELANJUTNYA ▶</button>
+            <button class="ts-btn btn-gold" id="btnSelesai" onclick="selesaiUlangan()" style="display:none">
               ✅ SELESAI ULANGAN
             </button>
           </div>
         </div>
 
-        <div class="mc-card nav-card">
-          <div class="card-header">📌 SOAL</div>
+        <div class="ts-card nav-card">
+          <div class="card-header small-header">📌 SOAL</div>
           <div class="soal-nav" id="soalNav"></div>
         </div>
 
@@ -108,14 +128,14 @@
     <div class="result-container">
 
       <div class="win-animation" id="winAnim">
-        <div class="win-icon">🏆</div>
-        <div class="fireworks" id="fireworks"></div>
+        <div class="win-icon" id="winIcon">🏆</div>
+        <div class="stars-burst" id="starsBurst"></div>
       </div>
 
-      <div class="mc-card result-card">
-        <div class="card-header">🎉 HASIL ULANGAN</div>
+      <div class="ts-card result-card">
+        <div class="card-header">🎉 HASIL PETUALANGAN</div>
         <div class="result-info">
-          <div class="result-nama" id="resultNama">Player</div>
+          <div class="result-nama" id="resultNama">Cowboy</div>
           <div class="result-kelas" id="resultKelas">Kelas</div>
         </div>
         <div class="result-stats">
@@ -141,9 +161,9 @@
           <div class="nilai-grade" id="nilaiGrade">-</div>
         </div>
         <div class="result-btns">
-          <button class="mc-btn btn-blue" id="btnReviewHasil" onclick="lihatReviewTerakhir()">🔍 REVIEW</button>
-          <button class="mc-btn btn-green" onclick="ulangLagi()">🔄 ULANGI</button>
-          <button class="mc-btn btn-brown" onclick="kembaliHome()">🏠 HOME</button>
+          <button class="ts-btn btn-buzz" id="btnReviewHasil" onclick="lihatReviewTerakhir()">🔍 REVIEW</button>
+          <button class="ts-btn btn-woody" onclick="ulangLagi()">🔄 ULANGI</button>
+          <button class="ts-btn btn-brown" onclick="kembaliHome()">🏠 HOME</button>
         </div>
       </div>
 
@@ -159,7 +179,7 @@
       <div class="review-topbar">
         <div class="review-summary">
           <div class="review-summary-info">
-            <span id="reviewNama">👤</span> &nbsp;|&nbsp; <span id="reviewKelas">🏫</span>
+            <span id="reviewNama">🤠</span> &nbsp;|&nbsp; <span id="reviewKelas">🏫</span>
           </div>
           <div class="review-summary-score">
             <div class="review-score-box box-nilai">📊 Nilai: <span id="reviewNilai">0</span></div>
@@ -167,17 +187,17 @@
             <div class="review-score-box box-salah">❌ Salah: <span id="reviewSalah">0</span></div>
           </div>
         </div>
-        <button class="mc-btn btn-small btn-brown" id="btnKembaliReviewTop" onclick="kembaliDariReview()">◀ KEMBALI</button>
+        <button class="ts-btn btn-small btn-brown" id="btnKembaliReviewTop" onclick="kembaliDariReview()">◀ KEMBALI</button>
       </div>
 
-      <div class="mc-card" style="margin-bottom:14px;">
+      <div class="ts-card" style="margin-bottom:14px;">
         <div class="card-header">🔍 REVIEW JAWABAN — Hijau = Benar &nbsp;|&nbsp; Merah = Salah</div>
       </div>
 
       <div id="reviewSoalList"></div>
 
       <div style="text-align:center; padding-bottom: 20px;">
-        <button class="mc-btn btn-brown" id="btnKembaliReviewBot" onclick="kembaliDariReview()">◀ KEMBALI</button>
+        <button class="ts-btn btn-brown" id="btnKembaliReviewBot" onclick="kembaliDariReview()">◀ KEMBALI</button>
       </div>
 
     </div>

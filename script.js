@@ -1,131 +1,239 @@
 /* ============================================
-   MINECRAFT QUIZ - script.js
+   TOY STORY QUIZ - script.js
    ============================================ */
 
 /* ============================================
-   DATA SOAL
+   DATA SOAL — Lebih Sulit (HTML/CSS/JS/PHP)
    ============================================ */
 const dataSoal = [
   {
-    soal: "Struktur dasar dokumen HTML yang benar dan wajib ada di setiap halaman web adalah...",
+    soal: "Perhatikan kode berikut: <div id='box'><p class='text'>Hello</p></div>. Selector CSS mana yang memiliki spesifisitas (specificity) TERTINGGI untuk menargetkan elemen <p>?",
     pilihan: [
-      "<!DOCTYPE html>, <html>, <head>, <body>",
-      "<html>, <title>, <content>, <footer>",
-      "<!DOCTYPE>, <webpage>, <header>, <main>",
-      "<doctype html>, <html>, <meta>, <body>",
-      "<start>, <html>, <head>, <end>"
+      "p { color: red; }",
+      ".text { color: red; }",
+      "#box p { color: red; }",
+      "#box .text { color: red; }",
+      "div .text { color: red; }"
     ],
-    jawaban: 0
-  },
-  {
-    soal: "Atribut HTML yang digunakan untuk menentukan alamat tujuan sebuah link adalah...",
-    pilihan: ["src", "link", "href", "url", "target"],
-    jawaban: 2
-  },
-  {
-    soal: "Tag HTML yang digunakan untuk membuat tabel data di halaman web adalah...",
-    pilihan: ["<tab>", "<tbl>", "<table>", "<tr>", "<grid>"],
-    jawaban: 2
-  },
-  {
-    soal: "Atribut yang digunakan pada tag <img> untuk menampilkan teks alternatif ketika gambar gagal dimuat adalah...",
-    pilihan: ["title", "caption", "name", "alt", "desc"],
     jawaban: 3
   },
   {
-    soal: "Tag HTML yang digunakan untuk menampilkan gambar di halaman web adalah...",
-    pilihan: ["<picture>", "<img>", "<image>", "<src>", "<photo>"],
-    jawaban: 1
-  },
-  {
-    soal: "Properti CSS yang digunakan untuk mengubah warna teks adalah...",
-    pilihan: ["text-color", "font-color", "color", "foreground", "text-style"],
-    jawaban: 2
-  },
-  {
-    soal: "Selector CSS yang digunakan untuk memilih elemen berdasarkan ID adalah...",
-    pilihan: [".namaID", "#namaID", "*namaID", "@namaID", "!namaID"],
-    jawaban: 1
-  },
-  {
-    soal: "Properti CSS yang mengatur jarak di dalam elemen (antara konten dan border) disebut...",
-    pilihan: ["margin", "spacing", "border-space", "padding", "gap"],
-    jawaban: 3
-  },
-  {
-    soal: "Nilai properti CSS 'display' yang membuat elemen menjadi kotak fleksibel adalah...",
-    pilihan: ["block", "inline", "flex", "grid", "box"],
-    jawaban: 2
-  },
-  {
-    soal: "Cara penulisan CSS yang ditempatkan langsung di dalam tag HTML menggunakan atribut apa?",
-    pilihan: ["class", "css", "style", "design", "format"],
-    jawaban: 2
-  },
-  {
-    soal: "Keyword JavaScript yang digunakan untuk mendeklarasikan variabel yang nilainya tidak bisa diubah adalah...",
-    pilihan: ["var", "let", "const", "fixed", "static"],
-    jawaban: 2
-  },
-  {
-    soal: "Fungsi JavaScript yang digunakan untuk menampilkan kotak dialog pesan kepada pengguna adalah...",
-    pilihan: ["print()", "console.log()", "document.write()", "alert()", "show()"],
-    jawaban: 3
-  },
-  {
-    soal: "Metode JavaScript yang digunakan untuk mengambil elemen HTML berdasarkan ID-nya adalah...",
+    soal: "Dalam model CSS Box Model, jika sebuah elemen memiliki: width: 200px; padding: 10px; border: 5px solid; margin: 20px; dan box-sizing adalah nilai DEFAULT (content-box), berapakah lebar TOTAL yang ditempati elemen tersebut termasuk margin?",
     pilihan: [
-      "document.getElement()",
-      "document.getElementById()",
-      "document.queryId()",
-      "document.findById()",
-      "document.selectId()"
+      "200px",
+      "230px",
+      "250px",
+      "270px",
+      "290px"
+    ],
+    jawaban: 3
+  },
+  {
+    soal: "Apa output yang dihasilkan oleh kode JavaScript berikut?\nconsole.log(typeof null);",
+    pilihan: [
+      "\"null\"",
+      "\"undefined\"",
+      "\"object\"",
+      "\"boolean\"",
+      "Error"
+    ],
+    jawaban: 2
+  },
+  {
+    soal: "Apa output dari kode JavaScript ini?\nlet x = 5;\nlet y = x++;\nconsole.log(x, y);",
+    pilihan: [
+      "5 5",
+      "6 5",
+      "5 6",
+      "6 6",
+      "undefined undefined"
     ],
     jawaban: 1
   },
   {
-    soal: "Perulangan (loop) dalam JavaScript yang akan selalu dieksekusi minimal satu kali adalah...",
-    pilihan: ["for", "while", "do...while", "foreach", "loop"],
+    soal: "Dalam PHP, perbedaan utama antara == (double equals) dan === (triple equals) adalah...",
+    pilihan: [
+      "== membandingkan nilai, === membandingkan alamat memori",
+      "== untuk angka, === untuk string",
+      "== membandingkan nilai saja, === membandingkan nilai DAN tipe data",
+      "Keduanya identik, tidak ada perbedaan",
+      "== lebih cepat, === lebih lambat"
+    ],
     jawaban: 2
   },
   {
-    soal: "Tipe data JavaScript yang digunakan untuk menyimpan kumpulan nilai dalam satu variabel adalah...",
-    pilihan: ["Object", "String", "Array", "Number", "Boolean"],
+    soal: "Tag HTML5 semantik mana yang paling TEPAT digunakan untuk menampilkan navigasi menu utama sebuah website?",
+    pilihan: [
+      "<div id='menu'>",
+      "<menu>",
+      "<nav>",
+      "<header>",
+      "<section>"
+    ],
     jawaban: 2
   },
   {
-    soal: "Simbol yang digunakan untuk mendeklarasikan variabel dalam bahasa PHP adalah...",
-    pilihan: ["@", "#", "$", "&", "%"],
-    jawaban: 2
-  },
-  {
-    soal: "Fungsi PHP yang digunakan untuk menghitung jumlah elemen dalam sebuah array adalah...",
-    pilihan: ["sizeof()", "length()", "count()", "total()", "num()"],
-    jawaban: 2
-  },
-  {
-    soal: "Fungsi PHP yang digunakan untuk menampilkan output ke halaman web adalah...",
-    pilihan: ["print_r()", "display()", "write()", "echo", "output()"],
+    soal: "Properti CSS flex mana yang digunakan untuk mengatur urutan sebuah item flex secara individual TANPA mengubah urutan di HTML?",
+    pilihan: [
+      "flex-direction",
+      "align-self",
+      "flex-grow",
+      "order",
+      "z-index"
+    ],
     jawaban: 3
   },
   {
-    soal: "Metode pengiriman data form HTML yang tidak menampilkan data di URL adalah...",
-    pilihan: ["GET", "PUT", "POST", "SEND", "SUBMIT"],
+    soal: "Perhatikan kode PHP berikut:\n$a = '5';\n$b = 5;\necho ($a == $b) ? 'sama' : 'beda';\necho ($a === $b) ? 'sama' : 'beda';\nApa output yang dihasilkan?",
+    pilihan: [
+      "beda beda",
+      "sama beda",
+      "sama sama",
+      "beda sama",
+      "Error"
+    ],
+    jawaban: 1
+  },
+  {
+    soal: "Dalam JavaScript, method array mana yang TIDAK mengubah array asli (non-mutating)?",
+    pilihan: [
+      "push()",
+      "sort()",
+      "splice()",
+      "map()",
+      "reverse()"
+    ],
+    jawaban: 3
+  },
+  {
+    soal: "Apa perbedaan antara localStorage dan sessionStorage dalam JavaScript?",
+    pilihan: [
+      "localStorage hanya untuk angka, sessionStorage untuk string",
+      "localStorage data permanen hingga dihapus manual, sessionStorage hilang saat tab/browser ditutup",
+      "localStorage tersimpan di server, sessionStorage di browser",
+      "localStorage kapasitas lebih kecil dari sessionStorage",
+      "Tidak ada perbedaan, keduanya identik"
+    ],
+    jawaban: 1
+  },
+  {
+    soal: "Dalam HTML, atribut 'defer' pada tag <script> berfungsi untuk...",
+    pilihan: [
+      "Menjalankan script sebelum HTML selesai di-parse",
+      "Memuat script secara asinkron dan menjalankannya setelah HTML selesai di-parse",
+      "Menonaktifkan script secara sementara",
+      "Memuat script dari cache browser",
+      "Menghentikan rendering halaman"
+    ],
+    jawaban: 1
+  },
+  {
+    soal: "Di CSS, apa yang dilakukan properti 'position: sticky'?",
+    pilihan: [
+      "Elemen mengikuti scroll seperti position: fixed selamanya",
+      "Elemen berperilaku seperti relative sampai batas scroll tertentu, lalu seperti fixed",
+      "Elemen menempel di sudut kiri atas halaman",
+      "Elemen tidak bisa digeser dengan scroll",
+      "Elemen melekat pada elemen induknya saja"
+    ],
+    jawaban: 1
+  },
+  {
+    soal: "Apa output dari kode PHP berikut?\n$arr = [3, 1, 4, 1, 5, 9];\nsort($arr);\necho $arr[0];",
+    pilihan: [
+      "3",
+      "9",
+      "1",
+      "0",
+      "Error"
+    ],
     jawaban: 2
   },
   {
-    soal: "Ekstensi file yang digunakan untuk menyimpan kode PHP adalah...",
-    pilihan: [".html", ".js", ".py", ".php", ".css"],
+    soal: "Dalam JavaScript, apa yang dimaksud dengan 'Event Bubbling'?",
+    pilihan: [
+      "Event hanya terjadi pada elemen target saja",
+      "Event menyebar dari elemen induk ke elemen anak",
+      "Event menyebar dari elemen target ke atas menuju elemen induk (dan seterusnya ke atas)",
+      "Event diulang berkali-kali secara otomatis",
+      "Event berjalan bersamaan secara paralel"
+    ],
+    jawaban: 2
+  },
+  {
+    soal: "Nilai CSS 'display: inline-block' berbeda dari 'display: inline' karena...",
+    pilihan: [
+      "inline-block tidak bisa disejajarkan dengan elemen lain",
+      "inline-block memungkinkan pengaturan width dan height, sedangkan inline tidak",
+      "inline-block selalu mengambil lebar penuh container",
+      "inline-block tidak bisa diberi padding atau margin",
+      "Tidak ada perbedaan antara keduanya"
+    ],
+    jawaban: 1
+  },
+  {
+    soal: "Dalam PHP, fungsi apa yang digunakan untuk mencegah SQL Injection saat menggunakan ekstensi MySQLi?",
+    pilihan: [
+      "mysql_escape_string()",
+      "htmlspecialchars()",
+      "strip_tags()",
+      "mysqli_real_escape_string()",
+      "addslashes()"
+    ],
     jawaban: 3
+  },
+  {
+    soal: "Apa output dari kode JavaScript berikut?\nconsole.log(0.1 + 0.2 === 0.3);",
+    pilihan: [
+      "true",
+      "false",
+      "undefined",
+      "NaN",
+      "Error"
+    ],
+    jawaban: 1
+  },
+  {
+    soal: "Pada CSS Grid, properti shorthand 'grid-area' dapat menerima nilai berupa...",
+    pilihan: [
+      "Hanya nama area yang didefinisikan di grid-template-areas",
+      "row-start / column-start / row-end / column-end",
+      "Hanya angka untuk menentukan kolom",
+      "Nilai pixel untuk ukuran area",
+      "Nama dan ukuran sekaligus"
+    ],
+    jawaban: 1
+  },
+  {
+    soal: "Manakah cara yang BENAR untuk membuat prepared statement di PHP menggunakan PDO?",
+    pilihan: [
+      "$db->query(\"SELECT * FROM users WHERE id = $id\")",
+      "$db->prepare(\"SELECT * FROM users WHERE id = ?\")->execute([$id])",
+      "$db->select(\"users\", [\"id\" => $id])",
+      "mysqli_query($conn, \"SELECT * FROM users WHERE id = $id\")",
+      "SELECT * FROM users WHERE id = :id"
+    ],
+    jawaban: 1
+  },
+  {
+    soal: "Dalam JavaScript ES6+, apa perbedaan utama antara 'let' dan 'var' dalam hal scope?",
+    pilihan: [
+      "let memiliki function scope, var memiliki block scope",
+      "var memiliki block scope, let memiliki global scope",
+      "let memiliki block scope, var memiliki function/global scope",
+      "Keduanya memiliki scope yang sama persis",
+      "let hanya untuk angka, var untuk semua tipe data"
+    ],
+    jawaban: 2
   }
 ];
 
 /* ============================================
    KONSTANTA & STATE
    ============================================ */
-const WAKTU_TOTAL   = 30 * 60; // 30 menit dalam detik
-const STORAGE_KEY   = 'minecraft_quiz_riwayat';
-const OPSI_HURUF    = ['A', 'B', 'C', 'D', 'E'];
+const WAKTU_TOTAL  = 30 * 60;
+const STORAGE_KEY  = 'toystory_quiz_riwayat';
+const OPSI_HURUF   = ['A', 'B', 'C', 'D', 'E'];
 
 let state = {
   nama             : '',
@@ -137,11 +245,11 @@ let state = {
   audioOn          : true,
   startTime        : null,
   waktuTerpakai    : 0,
-  snapshotJawaban  : null  // disimpan setelah selesai ulangan, dipakai untuk review langsung
+  snapshotJawaban  : null
 };
 
 /* ============================================
-   AUDIO ENGINE
+   AUDIO ENGINE — Toy Story / Western / Space
    ============================================ */
 let audioCtx = null;
 
@@ -151,15 +259,16 @@ function initAudio() {
   }
 }
 
-function playTone(freq, duration, type = 'square', volume = 0.3) {
+function playTone(freq, duration, type = 'sine', volume = 0.3, detune = 0) {
   if (!state.audioOn || !audioCtx) return;
   try {
     const osc  = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
     osc.connect(gain);
     gain.connect(audioCtx.destination);
-    osc.type = type;
+    osc.type    = type;
     osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    osc.detune.setValueAtTime(detune, audioCtx.currentTime);
     gain.gain.setValueAtTime(volume, audioCtx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
     osc.start(audioCtx.currentTime);
@@ -167,31 +276,113 @@ function playTone(freq, duration, type = 'square', volume = 0.3) {
   } catch (e) {}
 }
 
-function soundClick()    { initAudio(); playTone(440, 0.08, 'square', 0.2); setTimeout(() => playTone(660, 0.06, 'square', 0.15), 40); }
-function soundNextSoal() { initAudio(); playTone(523, 0.1, 'square', 0.2);  setTimeout(() => playTone(659, 0.1, 'square', 0.18), 80); }
-function soundPilih()    { initAudio(); playTone(659, 0.12, 'square', 0.25); }
-function soundWin()      { initAudio(); [523, 659, 784, 1047, 784, 659, 784, 1047].forEach((n, i) => setTimeout(() => playTone(n, 0.18, 'square', 0.25), i * 110)); }
-function soundError()    { initAudio(); playTone(220, 0.15, 'sawtooth', 0.2); setTimeout(() => playTone(180, 0.2, 'sawtooth', 0.15), 100); }
+function playChord(freqs, duration, type = 'sine', volume = 0.2) {
+  freqs.forEach(f => playTone(f, duration, type, volume));
+}
 
-// Background music
+/* Woody's yodel-like click — "YEEHAW!" sfx */
+function soundClick() {
+  initAudio();
+  // Western whistle-like ascending
+  playTone(523, 0.06, 'triangle', 0.25);
+  setTimeout(() => playTone(659, 0.06, 'triangle', 0.2),  60);
+  setTimeout(() => playTone(784, 0.08, 'triangle', 0.18), 120);
+}
+
+/* Buzz Lightyear "To infinity!" — space laser */
+function soundPilih() {
+  initAudio();
+  // Laser zap: descending freq sweep
+  if (!audioCtx) return;
+  try {
+    const osc  = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(1200, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.18);
+    gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.22);
+    osc.start(audioCtx.currentTime);
+    osc.stop(audioCtx.currentTime + 0.25);
+  } catch (e) {}
+}
+
+/* Next soal — Sheriff's badge "ding" */
+function soundNextSoal() {
+  initAudio();
+  // Bright bell-like tone
+  playTone(880, 0.12, 'sine', 0.2);
+  setTimeout(() => playTone(1046, 0.1, 'sine', 0.15), 80);
+}
+
+/* Win sound — "You've got a friend in me" melody fragment */
+function soundWin() {
+  initAudio();
+  // Melody: C-E-G-C (major chord arpeggio then up)
+  const melody = [523, 659, 784, 1046, 784, 880, 1046, 1174, 1046, 784, 1046];
+  melody.forEach((note, i) => {
+    setTimeout(() => playTone(note, 0.22, 'sine', 0.22), i * 130);
+  });
+  // Add harmony chord underneath
+  setTimeout(() => playChord([262, 330, 392], 0.5, 'sine', 0.12), 400);
+  setTimeout(() => playChord([349, 440, 523], 0.5, 'sine', 0.12), 900);
+}
+
+/* Error sound — sad trombone */
+function soundError() {
+  initAudio();
+  playTone(440, 0.1, 'sawtooth', 0.2);
+  setTimeout(() => playTone(392, 0.1, 'sawtooth', 0.2), 110);
+  setTimeout(() => playTone(349, 0.12, 'sawtooth', 0.18), 220);
+  setTimeout(() => playTone(294, 0.25, 'sawtooth', 0.15), 340);
+}
+
+/* Warning — cowboy whistle */
+function soundWarning() {
+  initAudio();
+  playTone(740, 0.12, 'sine', 0.2);
+  setTimeout(() => playTone(698, 0.08, 'sine', 0.18), 130);
+  setTimeout(() => playTone(659, 0.12, 'sine', 0.15), 230);
+}
+
+/* Background music — "You've got a friend in me" inspired loop */
 let bgMusicInterval = null;
-const bgNotes       = [262, 330, 392, 523, 392, 330, 262, 196, 247, 330, 392, 294];
-let bgNoteIndex     = 0;
+const bgMelody = [
+  { note: 262, dur: 0.3 },  // C
+  { note: 294, dur: 0.15 }, // D
+  { note: 330, dur: 0.15 }, // E
+  { note: 349, dur: 0.3 },  // F
+  { note: 392, dur: 0.45 }, // G
+  { note: 330, dur: 0.15 }, // E
+  { note: 392, dur: 0.3 },  // G
+  { note: 440, dur: 0.3 },  // A
+  { note: 392, dur: 0.45 }, // G
+  { note: 330, dur: 0.15 }, // E
+  { note: 294, dur: 0.15 }, // D
+  { note: 262, dur: 0.45 }, // C
+];
+let bgNoteIndex = 0;
+let bgTimeout   = null;
+
+function scheduleBgNote() {
+  if (!state.audioOn || !audioCtx) return;
+  const n = bgMelody[bgNoteIndex % bgMelody.length];
+  playTone(n.note, n.dur * 0.85, 'sine', 0.07);
+  bgNoteIndex++;
+  bgTimeout = setTimeout(scheduleBgNote, n.dur * 1000);
+}
 
 function startBgMusic() {
-  if (bgMusicInterval) return;
-  bgMusicInterval = setInterval(() => {
-    if (state.audioOn && audioCtx) {
-      playTone(bgNotes[bgNoteIndex % bgNotes.length], 0.35, 'square', 0.08);
-      bgNoteIndex++;
-    }
-  }, 380);
+  if (bgTimeout) return;
+  scheduleBgNote();
 }
 
 function stopBgMusic() {
-  if (bgMusicInterval) {
-    clearInterval(bgMusicInterval);
-    bgMusicInterval = null;
+  if (bgTimeout) {
+    clearTimeout(bgTimeout);
+    bgTimeout = null;
   }
 }
 
@@ -203,7 +394,7 @@ function toggleAudio() {
   if (state.audioOn) {
     btn.textContent = '🔊 SUARA: ON';
     startBgMusic();
-    showToast('Suara dinyalakan 🔊');
+    showToast('Suara dinyalakan 🔊 Yeehaw!');
   } else {
     btn.textContent = '🔇 SUARA: OFF';
     stopBgMusic();
@@ -212,50 +403,56 @@ function toggleAudio() {
 }
 
 /* ============================================
-   BACKGROUND BLOCKS (Dekorasi)
+   BACKGROUND — Andy's Room Scene
    ============================================ */
-function generateBgBlocks() {
-  const container = document.getElementById('bgBlocks');
-
-  // Bintang piksel
-  for (let i = 0; i < 50; i++) {
-    const star = document.createElement('div');
-    star.className = 'pixel-star';
-    star.style.cssText = `
-      top:${Math.random() * 55}%;
-      left:${Math.random() * 100}%;
-      animation-delay:${Math.random() * 3}s;
-      animation-duration:${1.5 + Math.random() * 2}s;
-      opacity:${0.2 + Math.random() * 0.8};
+function generateBgScene() {
+  // Clouds
+  const cloudsLayer = document.getElementById('cloudsLayer');
+  const cloudData = [
+    { w: 120, h: 40, top: 8,  dur: 28, delay: 0 },
+    { w: 90,  h: 30, top: 15, dur: 35, delay: -12 },
+    { w: 150, h: 50, top: 5,  dur: 42, delay: -22 },
+    { w: 80,  h: 28, top: 22, dur: 30, delay: -8 },
+    { w: 110, h: 36, top: 12, dur: 38, delay: -30 },
+  ];
+  cloudData.forEach(c => {
+    const cloud = document.createElement('div');
+    cloud.className = 'cloud';
+    cloud.style.cssText = `
+      width: ${c.w}px;
+      height: ${c.h}px;
+      top: ${c.top}%;
+      animation-duration: ${c.dur}s;
+      animation-delay: ${c.delay}s;
     `;
-    container.appendChild(star);
-  }
+    cloudsLayer.appendChild(cloud);
+  });
 
-  // Blok melayang
-  const blockTypes = ['grass', 'stone', 'wood', 'diamond'];
-  for (let i = 0; i < 14; i++) {
-    const block = document.createElement('div');
-    const type  = blockTypes[Math.floor(Math.random() * blockTypes.length)];
-    block.className = `float-block ${type}`;
-    const dur   = 12 + Math.random() * 18;
-    const delay = Math.random() * -20;
-    const left  = Math.random() * 95;
-    const size  = 24 + Math.floor(Math.random() * 3) * 8;
-    block.style.cssText = `
-      left:${left}%;
-      animation-duration:${dur}s;
-      animation-delay:${delay}s;
-      width:${size}px;
-      height:${size}px;
+  // Floating toy emojis — Toy Story characters/items
+  const floatingToys = document.getElementById('floatingToys');
+  const toys = ['🤠','🚀','🦕','🐻','🐷','🎪','⭐','🌟','🎠','🎀','🧸','🐶'];
+  for (let i = 0; i < 16; i++) {
+    const toy = document.createElement('div');
+    toy.className = 'toy-float';
+    const emoji = toys[Math.floor(Math.random() * toys.length)];
+    const dur   = 16 + Math.random() * 20;
+    const delay = Math.random() * -25;
+    const left  = Math.random() * 96;
+    toy.textContent = emoji;
+    toy.style.cssText = `
+      left: ${left}%;
+      animation-duration: ${dur}s;
+      animation-delay: ${delay}s;
+      font-size: ${20 + Math.floor(Math.random() * 3) * 10}px;
     `;
-    container.appendChild(block);
+    floatingToys.appendChild(toy);
   }
 }
 
 /* ============================================
    TOAST NOTIFICATION
    ============================================ */
-function showToast(pesan, durasi = 2000) {
+function showToast(pesan, durasi = 2200) {
   const existing = document.querySelector('.toast');
   if (existing) existing.remove();
 
@@ -266,7 +463,8 @@ function showToast(pesan, durasi = 2000) {
 
   setTimeout(() => {
     toast.style.opacity    = '0';
-    toast.style.transition = 'opacity 0.3s';
+    toast.style.transition = 'opacity 0.3s, transform 0.3s';
+    toast.style.transform  = 'translateX(-50%) translateY(10px)';
     setTimeout(() => toast.remove(), 300);
   }, durasi);
 }
@@ -292,7 +490,7 @@ function mulaiUlangan() {
 
   if (!nama) {
     soundError();
-    showToast('⚠️ Nama tidak boleh kosong!');
+    showToast('⚠️ Nama tidak boleh kosong, cowboy!');
     document.getElementById('inputNama').focus();
     return;
   }
@@ -303,7 +501,6 @@ function mulaiUlangan() {
     return;
   }
 
-  // Reset state
   state.nama          = nama;
   state.kelas         = kelas;
   state.soalIndex     = 0;
@@ -312,7 +509,7 @@ function mulaiUlangan() {
   state.waktuTerpakai = 0;
   state.startTime     = Date.now();
 
-  document.getElementById('quizNama').textContent  = `👤 ${nama}`;
+  document.getElementById('quizNama').textContent  = `🤠 ${nama}`;
   document.getElementById('quizKelas').textContent = `🏫 ${kelas}`;
 
   renderNavNomor();
@@ -320,7 +517,7 @@ function mulaiUlangan() {
   startBgMusic();
   tampilkanSoal(0);
   showPage('pageQuiz');
-  showToast('🎮 Ulangan dimulai! Semangat!');
+  showToast(`🤠 Reach for the sky, ${nama}! Semangat!`);
 }
 
 /* ============================================
@@ -336,13 +533,13 @@ function startTimer() {
     state.waktuTerpakai++;
     updateTimerDisplay();
 
-    if (state.timer === 5 * 60) { showToast('⚠️ Sisa waktu 5 menit!', 3000); soundError(); }
-    if (state.timer === 60)     { showToast('🚨 Sisa waktu 1 menit!', 3000); soundError(); }
+    if (state.timer === 5 * 60) { showToast('⚠️ Sisa waktu 5 menit! Cepat, cowboy!', 3000); soundWarning(); }
+    if (state.timer === 60)     { showToast('🚀 Sisa waktu 1 menit! To infinity!', 3000); soundWarning(); }
     if (state.timer <= 0) {
       state.timer = 0;
       updateTimerDisplay();
       clearInterval(state.timerInterval);
-      showToast('⏰ Waktu habis!', 3000);
+      showToast('⏰ Waktu habis, cowboy!', 3000);
       setTimeout(() => selesaiUlangan(true), 1000);
     }
   }, 1000);
@@ -358,9 +555,9 @@ function updateTimerDisplay() {
   const el  = document.getElementById('quizTimer');
   el.textContent = `⏱ ${mnt}:${dtk}`;
 
-  if (state.timer <= 60)       el.style.color = '#e74c3c';
-  else if (state.timer <= 300) el.style.color = '#f0c030';
-  else                         el.style.color = 'var(--mc-yellow)';
+  if (state.timer <= 60)       el.style.color = 'var(--woody-red)';
+  else if (state.timer <= 300) el.style.color = '#E07000';
+  else                         el.style.color = 'var(--woody-gold-dark)';
 }
 
 function formatWaktu(detik) {
@@ -368,7 +565,7 @@ function formatWaktu(detik) {
 }
 
 /* ============================================
-   NAVIGASI NOMOR SOAL (2 kolom)
+   NAVIGASI NOMOR SOAL
    ============================================ */
 function renderNavNomor() {
   const container = document.getElementById('soalNav');
@@ -381,8 +578,8 @@ function renderNavNomor() {
 
   for (let i = 0; i < dataSoal.length; i++) {
     const btn = document.createElement('button');
-    btn.className    = 'nav-btn';
-    btn.textContent  = i + 1;
+    btn.className     = 'nav-btn';
+    btn.textContent   = i + 1;
     btn.dataset.index = i;
     btn.addEventListener('click', () => { soundClick(); goToSoal(i); });
     (i < 10 ? col1 : col2).appendChild(btn);
@@ -396,7 +593,7 @@ function renderNavNomor() {
 function updateNavNomor() {
   document.querySelectorAll('.nav-btn').forEach((btn, i) => {
     btn.classList.remove('active', 'answered');
-    if (i === state.soalIndex)   btn.classList.add('active');
+    if (i === state.soalIndex)     btn.classList.add('active');
     if (state.jawaban[i] !== null) btn.classList.add('answered');
   });
 }
@@ -407,7 +604,7 @@ function updateNavNomor() {
 function tampilkanSoal(index) {
   const soal = dataSoal[index];
   document.getElementById('soalNumber').textContent = `Soal ${index + 1} / ${dataSoal.length}`;
-  document.getElementById('soalText').innerHTML     = escapeHTML(soal.soal);
+  document.getElementById('soalText').innerHTML     = escapeHTML(soal.soal).replace(/\n/g, '<br>');
 
   const container = document.getElementById('jawabanList');
   container.innerHTML = '';
@@ -448,7 +645,7 @@ function pilihJawaban(soalIdx, jawabanIdx) {
   });
   updateNavNomor();
   if (state.jawaban.every(j => j !== null)) {
-    showToast('✅ Semua soal sudah dijawab! Tekan Selesai.');
+    showToast('⭐ Semua soal sudah dijawab! Tekan Selesai, cowboy!');
   }
 }
 
@@ -482,7 +679,7 @@ function selesaiUlangan(force = false) {
     const belumDijawab = state.jawaban.filter(j => j === null).length;
     if (belumDijawab > 0) {
       soundError();
-      showToast(`⚠️ Masih ada ${belumDijawab} soal belum dijawab!`);
+      showToast(`⚠️ Masih ada ${belumDijawab} soal belum dijawab, cowboy!`);
       goToSoal(state.jawaban.findIndex(j => j === null));
       return;
     }
@@ -492,20 +689,17 @@ function selesaiUlangan(force = false) {
   stopTimer();
   stopBgMusic();
 
-  // Hitung skor
   let benar = 0;
   dataSoal.forEach((soal, i) => {
     if (state.jawaban[i] === soal.jawaban) benar++;
   });
 
-  const salah   = dataSoal.length - benar;
-  const nilai   = benar * 5;
+  const salah    = dataSoal.length - benar;
+  const nilai    = benar * 5;
   const waktuStr = formatWaktu(state.waktuTerpakai);
 
-  // Simpan snapshot jawaban ke state agar review halaman hasil bisa pakai langsung
   state.snapshotJawaban = [...state.jawaban];
 
-  // Simpan ke riwayat localStorage
   simpanRiwayat({
     nama           : state.nama,
     kelas          : state.kelas,
@@ -520,11 +714,11 @@ function selesaiUlangan(force = false) {
   tampilkanHasil(benar, salah, nilai, waktuStr);
   showPage('pageResult');
   soundWin();
-  setTimeout(() => buatFireworks(), 300);
+  setTimeout(() => buatStarBurst(), 300);
 }
 
 function tampilkanHasil(benar, salah, nilai, waktu) {
-  document.getElementById('resultNama').textContent  = `👤 ${state.nama}`;
+  document.getElementById('resultNama').textContent  = `🤠 ${state.nama}`;
   document.getElementById('resultKelas').textContent = `🏫 ${state.kelas}`;
   document.getElementById('statBenar').textContent   = benar;
   document.getElementById('statSalah').textContent   = salah;
@@ -540,46 +734,49 @@ function tampilkanHasil(benar, salah, nilai, waktu) {
     if (cur >= nilai) clearInterval(iv);
   }, 50);
 
-  // Grade
+  // Grade + karakter Toy Story
   const gradeEl = document.getElementById('nilaiGrade');
-  let gradeClass, gradeLabel;
-  if      (nilai >= 90) { gradeClass = 'grade-A'; gradeLabel = 'Grade A — ⭐ LUAR BIASA!'; }
-  else if (nilai >= 75) { gradeClass = 'grade-B'; gradeLabel = 'Grade B — 👍 BAGUS!'; }
-  else if (nilai >= 60) { gradeClass = 'grade-C'; gradeLabel = 'Grade C — 😊 CUKUP'; }
-  else if (nilai >= 40) { gradeClass = 'grade-D'; gradeLabel = 'Grade D — 😅 PERLU BELAJAR LAGI'; }
-  else                  { gradeClass = 'grade-E'; gradeLabel = 'Grade E — 😢 TERUS SEMANGAT!'; }
+  const winIcon  = document.getElementById('winIcon');
+  let gradeClass, gradeLabel, icon;
+
+  if      (nilai >= 90) { gradeClass = 'grade-A'; gradeLabel = 'Grade A — 🤠 TO INFINITY AND BEYOND!'; icon = '🏆'; }
+  else if (nilai >= 75) { gradeClass = 'grade-B'; gradeLabel = 'Grade B — 🚀 You\'ve Got a Friend!'; icon = '⭐'; }
+  else if (nilai >= 60) { gradeClass = 'grade-C'; gradeLabel = 'Grade C — 🦕 Cukup Bagus!'; icon = '🌟'; }
+  else if (nilai >= 40) { gradeClass = 'grade-D'; gradeLabel = 'Grade D — 🐷 Perlu Belajar Lagi!'; icon = '📚'; }
+  else                  { gradeClass = 'grade-E'; gradeLabel = 'Grade E — 🤠 Reach For The Sky Again!'; icon = '💪'; }
 
   gradeEl.textContent = gradeLabel;
   gradeEl.className   = `nilai-grade ${gradeClass}`;
+  if (winIcon) winIcon.textContent = icon;
 }
 
-function buatFireworks() {
-  const container = document.getElementById('fireworks');
-  const colors    = ['#5aac44', '#f0c030', '#e74c3c', '#3498db', '#e67e22', '#9b59b6'];
+function buatStarBurst() {
+  const container = document.getElementById('starsBurst');
+  const emojis    = ['⭐', '🌟', '✨', '💫', '🎉', '🎊', '🤠', '🚀'];
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 24; i++) {
     setTimeout(() => {
-      const px    = document.createElement('div');
-      px.className = 'firework-pixel';
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      const tx    = (Math.random() - 0.5) * 200;
-      const ty    = (Math.random() - 0.5) * 200;
-      px.style.cssText = `
-        background:${color};
-        left:${20 + Math.random() * 60}%;
-        top:${20 + Math.random() * 60}%;
-        --tx:${tx}px;
-        --ty:${ty}px;
-        box-shadow:0 0 6px ${color};
+      const star  = document.createElement('div');
+      star.className = 'star-particle';
+      const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+      const tx    = (Math.random() - 0.5) * 220;
+      const ty    = (Math.random() - 0.5) * 220;
+      star.textContent = emoji;
+      star.style.cssText = `
+        left: ${20 + Math.random() * 60}%;
+        top:  ${20 + Math.random() * 60}%;
+        --tx: ${tx}px;
+        --ty: ${ty}px;
+        font-size: ${14 + Math.random() * 16}px;
       `;
-      container.appendChild(px);
-      setTimeout(() => px.remove(), 1500);
-    }, i * 80);
+      container.appendChild(star);
+      setTimeout(() => star.remove(), 1600);
+    }, i * 70);
   }
 }
 
 /* ============================================
-   REVIEW DARI HALAMAN HASIL (pakai state langsung)
+   REVIEW DARI HALAMAN HASIL
    ============================================ */
 function lihatReviewTerakhir() {
   soundClick();
@@ -587,7 +784,6 @@ function lihatReviewTerakhir() {
     showToast('⚠️ Data jawaban tidak ditemukan.');
     return;
   }
-  // Review dari halaman hasil: tampilkan kunci jawaban (showKunci = true)
   tampilkanReviewDariData({
     nama           : state.nama,
     kelas          : state.kelas,
@@ -595,7 +791,7 @@ function lihatReviewTerakhir() {
     benar          : state.snapshotJawaban.filter((j, i) => j === dataSoal[i].jawaban).length,
     salah          : state.snapshotJawaban.filter((j, i) => j !== dataSoal[i].jawaban).length,
     jawabanPeserta : state.snapshotJawaban
-  }, true); // <-- showKunci = true
+  }, true);
 }
 
 /* ============================================
@@ -610,7 +806,7 @@ function ulangLagi() {
   state.waktuTerpakai   = 0;
   state.startTime       = Date.now();
 
-  document.getElementById('quizNama').textContent  = `👤 ${state.nama}`;
+  document.getElementById('quizNama').textContent  = `🤠 ${state.nama}`;
   document.getElementById('quizKelas').textContent = `🏫 ${state.kelas}`;
 
   renderNavNomor();
@@ -632,7 +828,7 @@ function kembaliHome() {
    ============================================ */
 function simpanRiwayat(data) {
   const riwayat = ambilRiwayat();
-  riwayat.unshift(data); // tambahkan di awal (terbaru di atas)
+  riwayat.unshift(data);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(riwayat));
 }
 
@@ -650,7 +846,7 @@ function muatRiwayat() {
   const actions = document.getElementById('historyActions');
 
   if (riwayat.length === 0) {
-    list.innerHTML        = '<p class="empty-msg">Belum ada data riwayat.</p>';
+    list.innerHTML        = '<p class="empty-msg">Belum ada data riwayat, cowboy. 🤠</p>';
     actions.style.display = 'none';
     return;
   }
@@ -672,7 +868,7 @@ function muatRiwayat() {
 
     div.innerHTML = `
       <div class="history-info">
-        <div class="history-nama">👤 ${escapeHTML(item.nama)}</div>
+        <div class="history-nama">🤠 ${escapeHTML(item.nama)}</div>
         <div class="history-detail">
           🏫 ${escapeHTML(item.kelas)} &nbsp;|&nbsp;
           ✅ ${item.benar} Benar &nbsp;|&nbsp;
@@ -683,8 +879,8 @@ function muatRiwayat() {
       </div>
       <div class="history-nilai ${nilaiClass}">${item.nilai}</div>
       <div class="history-btn-group">
-        <button class="mc-btn btn-small btn-blue" onclick="lihatReview(${idx})">🔍 Review</button>
-        <button class="mc-btn btn-small btn-red"  onclick="hapusSatu(${idx})">🗑</button>
+        <button class="ts-btn btn-small btn-buzz" onclick="lihatReview(${idx})">🔍 Review</button>
+        <button class="ts-btn btn-small btn-red"  onclick="hapusSatu(${idx})">🗑</button>
       </div>
     `;
     list.appendChild(div);
@@ -697,15 +893,15 @@ function hapusSatu(idx) {
   riwayat.splice(idx, 1);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(riwayat));
   muatRiwayat();
-  showToast('🗑️ Data dihapus');
+  showToast('🗑️ Data dihapus, pardner!');
 }
 
 function hapusSemua() {
   soundClick();
-  if (confirm('Hapus semua data riwayat?')) {
+  if (confirm('Hapus semua data riwayat, cowboy?')) {
     localStorage.removeItem(STORAGE_KEY);
     muatRiwayat();
-    showToast('🗑️ Semua data dihapus');
+    showToast('🗑️ Semua data dihapus!');
   }
 }
 
@@ -717,52 +913,30 @@ function lihatReview(idx) {
   const riwayat = ambilRiwayat();
   const item    = riwayat[idx];
   if (!item) { showToast('⚠️ Data tidak ditemukan.'); return; }
-  // Saat dari riwayat HOME, clear snapshot agar tombol kembali ke HOME
   state.snapshotJawaban = null;
-  // Review dari riwayat: TIDAK tampilkan kunci jawaban (showKunci = false)
   tampilkanReviewDariData(item, false);
 }
 
-/**
- * Inti render review — menerima objek data langsung.
- * 
- * @param {object} item        - Data riwayat/hasil
- * @param {boolean} showKunci  - true: tampilkan kunci jawaban (dari halaman hasil)
- *                               false: jangan tampilkan kunci (dari riwayat home)
- *
- * MODE showKunci=true (dari halaman hasil):
- *   - Jawaban benar → hijau + badge "Jawaban kamu (Benar)"
- *   - Jawaban salah user → merah + badge "Jawaban kamu (Salah)"
- *   - Kunci jawaban → hijau + badge "Kunci Jawaban" (muncul meski beda dari jawaban user)
- *
- * MODE showKunci=false (dari riwayat):
- *   - Jawaban benar → hijau + badge "✓ BENAR!"
- *   - Jawaban salah user → merah + badge "✗ SALAH!" (kunci TIDAK ditampilkan)
- */
 function tampilkanReviewDariData(item, showKunci = false) {
   if (!item) { showToast('⚠️ Data tidak ditemukan.'); return; }
 
-  // Update label tombol kembali sesuai asal halaman
   const labelKembali = state.snapshotJawaban ? '◀ KEMBALI KE HASIL' : '🏠 KEMBALI KE HOME';
   const btnTop = document.getElementById('btnKembaliReviewTop');
   const btnBot = document.getElementById('btnKembaliReviewBot');
   if (btnTop) btnTop.textContent = labelKembali;
   if (btnBot) btnBot.textContent = labelKembali;
 
-  // Fallback jika data lama tidak punya jawabanPeserta
   const jawabanData = item.jawabanPeserta && Array.isArray(item.jawabanPeserta)
     ? item.jawabanPeserta
     : new Array(dataSoal.length).fill(null);
 
   const dataLama = !item.jawabanPeserta || !Array.isArray(item.jawabanPeserta);
 
-  // Hitung ulang benar/salah dari jawabanData (akurat)
   let benarHitung = 0;
   jawabanData.forEach((j, i) => { if (j === dataSoal[i].jawaban) benarHitung++; });
   const salahHitung = dataSoal.length - benarHitung;
 
-  // Isi header
-  document.getElementById('reviewNama').textContent  = `👤 ${item.nama}`;
+  document.getElementById('reviewNama').textContent  = `🤠 ${item.nama}`;
   document.getElementById('reviewKelas').textContent = `🏫 ${item.kelas}`;
   document.getElementById('reviewNilai').textContent = dataLama ? item.nilai : (benarHitung * 5);
   document.getElementById('reviewBenar').textContent = dataLama ? item.benar : benarHitung;
@@ -771,13 +945,10 @@ function tampilkanReviewDariData(item, showKunci = false) {
   const container = document.getElementById('reviewSoalList');
   container.innerHTML = '';
 
-  // Banner data lama (hanya jika data memang lama / tidak punya jawabanPeserta)
   if (dataLama) {
     const banner = document.createElement('div');
     banner.className = 'review-banner-lama';
-    banner.innerHTML = showKunci
-      ? '⚠️ Data lama — jawaban peserta tidak tercatat. Hanya kunci jawaban yang ditampilkan.'
-      : '⚠️ Data lama — jawaban peserta tidak tercatat. Kerjakan ulang untuk melihat hasil lengkap.';
+    banner.innerHTML = '⚠️ Data lama — jawaban peserta tidak tercatat. Kerjakan ulang untuk melihat hasil lengkap.';
     container.appendChild(banner);
   }
 
@@ -793,12 +964,10 @@ function tampilkanReviewDariData(item, showKunci = false) {
     else                 { statusClass = 'review-salah';         statusIcon = '❌'; statusLabel = 'SALAH'; }
 
     let pilihanHTML = '';
-
     soal.pilihan.forEach((pilihan, j) => {
       let pClass = 'review-pilihan';
       let badge  = '';
 
-      // Hanya highlight jawaban user — kunci jawaban tidak ditampilkan sama sekali
       if (!tidakDijawab && j === jp) {
         if (jp === jb) {
           pClass += ' pilihan-benar';
@@ -824,7 +993,7 @@ function tampilkanReviewDariData(item, showKunci = false) {
         <span class="review-soal-num">${statusIcon} Soal ${i + 1}</span>
         <span class="review-status-label ${tidakDijawab ? 'label-tidak-dijawab' : (isBenar ? 'label-benar' : 'label-salah')}">${statusLabel}</span>
       </div>
-      <div class="review-soal-text">${escapeHTML(soal.soal)}</div>
+      <div class="review-soal-text">${escapeHTML(soal.soal).replace(/\n/g, '<br>')}</div>
       <div class="review-pilihan-list">${pilihanHTML}</div>
     `;
     container.appendChild(soalDiv);
@@ -835,7 +1004,6 @@ function tampilkanReviewDariData(item, showKunci = false) {
 
 function kembaliDariReview() {
   soundClick();
-  // Jika ada snapshotJawaban berarti review dibuka dari halaman hasil
   if (state.snapshotJawaban) {
     showPage('pageResult');
   } else {
@@ -859,13 +1027,11 @@ function escapeHTML(str) {
    INISIALISASI
    ============================================ */
 document.addEventListener('DOMContentLoaded', () => {
-  generateBgBlocks();
+  generateBgScene();
   muatRiwayat();
 
-  // Inisialisasi audio saat pertama kali klik
   document.body.addEventListener('click', () => initAudio(), { once: true });
 
-  // Keyboard shortcut form
   document.getElementById('inputNama').addEventListener('keydown', e => {
     if (e.key === 'Enter') document.getElementById('inputKelas').focus();
   });
