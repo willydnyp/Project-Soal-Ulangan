@@ -102,11 +102,11 @@ body {
   background: linear-gradient(
     180deg,
     #87CEEB 0%,
-    #B0DCF0 35%,
-    #D4EDFF 55%,
-    #FFF8E8 75%,
-    #FFEBCC 88%,
-    #FFDAA8 100%
+    #A8DCEF 30%,
+    #C8EAFA 55%,
+    #DCF0F8 75%,
+    #EEF7FB 90%,
+    #F5FBFD 100%
   );
 }
 
@@ -126,25 +126,174 @@ body {
   opacity: 0.8;
 }
 
-/* Ground */
-.ground-bar {
+/* ============================================
+   ANDY'S BED — Toy Story iconic green plaid bed
+   ============================================ */
+.andys-bed {
   position: absolute;
   bottom: 0; left: 0;
   width: 100%;
-  height: 80px;
-  background: linear-gradient(180deg, #8B6914 0%, #6B4E10 40%, #4A3408 100%);
-  border-top: 4px solid #A07820;
+  height: 160px;
 }
-.ground-bar::before {
+
+/* Headboard */
+.bed-headboard {
+  position: absolute;
+  bottom: 68px; left: 0;
+  width: 100%;
+  z-index: 2;
+}
+.headboard-top-rail {
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(180deg, #D4920C 0%, #B07510 50%, #8A5A0A 100%);
+  box-shadow: 0 -3px 0 #E8A820, 0 4px 8px rgba(0,0,0,0.3);
+}
+.headboard-panel {
+  width: 100%;
+  height: 36px;
+  background: linear-gradient(180deg, #C88A0C 0%, #A0700A 60%, #7A5208 100%);
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px,
+    transparent 1px, transparent 40px
+  );
+  border-top: 2px solid #E8A820;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.1), inset 0 -4px 8px rgba(0,0,0,0.2);
+}
+
+/* Bed surface (mattress area) */
+.bed-surface {
+  position: absolute;
+  bottom: 32px; left: 0;
+  width: 100%;
+  height: 86px;
+  z-index: 3;
+}
+
+/* Blanket / selimut hijau kotak-kotak khas Andy */
+.bed-blanket {
+  position: absolute;
+  inset: 0;
+  /* Base green */
+  background-color: #3A7A35;
+  /* Kotak-kotak plaid Toy Story */
+  background-image:
+    /* Garis horizontal tebal */
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.0) 0px,  rgba(255,255,255,0.0) 18px,
+      rgba(255,255,255,0.18) 18px, rgba(255,255,255,0.18) 24px,
+      rgba(0,0,0,0.0) 24px,       rgba(0,0,0,0.0) 42px,
+      rgba(0,0,0,0.12) 42px,      rgba(0,0,0,0.12) 48px
+    ),
+    /* Garis vertikal tebal */
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.0) 0px,  rgba(255,255,255,0.0) 18px,
+      rgba(255,255,255,0.18) 18px, rgba(255,255,255,0.18) 24px,
+      rgba(0,0,0,0.0) 24px,       rgba(0,0,0,0.0) 42px,
+      rgba(0,0,0,0.12) 42px,      rgba(0,0,0,0.12) 48px
+    ),
+    /* Garis tipis accent */
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px, transparent 9px,
+      rgba(80,160,60,0.5) 9px, rgba(80,160,60,0.5) 10px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px, transparent 9px,
+      rgba(80,160,60,0.5) 9px, rgba(80,160,60,0.5) 10px
+    );
+  border-top: 5px solid #60B855;
+  border-radius: 4px 4px 0 0;
+  box-shadow:
+    inset 0 6px 12px rgba(255,255,255,0.15),
+    inset 0 -4px 8px rgba(0,0,0,0.15),
+    0 -2px 0 #2A5E28;
+}
+
+/* Bantal / pillows */
+.bed-pillows {
+  position: absolute;
+  top: -22px; left: 0;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  gap: 16px;
+  padding: 0 40px;
+  z-index: 4;
+}
+
+.pillow {
+  flex: 1;
+  height: 30px;
+  border-radius: 12px 12px 8px 8px;
+  background: linear-gradient(180deg, #FEFEF8 0%, #F5F0DC 40%, #E8E0C0 100%);
+  border: 2px solid rgba(0,0,0,0.08);
+  box-shadow:
+    0 -3px 6px rgba(255,255,255,0.8),
+    0 3px 6px rgba(0,0,0,0.15),
+    inset 0 2px 4px rgba(255,255,255,0.9),
+    inset 0 -2px 4px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Jahitan / seam bantal */
+.pillow::after {
   content: '';
   position: absolute;
-  top: -8px; left: 0;
-  width: 100%; height: 8px;
-  background: repeating-linear-gradient(
-    90deg,
-    #7DC44A 0px, #7DC44A 48px,
-    #5EA835 48px, #5EA835 50px
-  );
+  top: 50%; left: 10%; right: 10%;
+  height: 1px;
+  background: rgba(0,0,0,0.08);
+  transform: translateY(-50%);
+}
+
+/* Rangka kasur / frame sides */
+.bed-frame-side {
+  position: absolute;
+  bottom: 0;
+  width: 22px;
+  height: 88px;
+  background: linear-gradient(180deg, #C88A0C 0%, #9A6A08 60%, #7A5208 100%);
+  z-index: 5;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.15);
+}
+.bed-frame-left  { left: 0; border-radius: 0 0 0 4px; box-shadow: 2px 0 6px rgba(0,0,0,0.2); }
+.bed-frame-right { right: 0; border-radius: 0 0 4px 0; box-shadow: -2px 0 6px rgba(0,0,0,0.2); }
+
+/* Kaki kasur */
+.bed-legs {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: 32px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 6px;
+}
+
+.bed-leg {
+  width: 16px;
+  height: 32px;
+  background: linear-gradient(180deg, #9A6A08 0%, #7A5208 50%, #5A3C06 100%);
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* Shadow bawah kasur */
+.andys-bed::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 10px; right: 10px;
+  height: 8px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 50%;
+  filter: blur(6px);
+  z-index: 0;
 }
 
 /* Floating toy icons */
