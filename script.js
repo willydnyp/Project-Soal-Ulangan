@@ -447,6 +447,41 @@ function generateBgScene() {
     `;
     floatingToys.appendChild(toy);
   }
+
+  // ── Scattered toys on Andy's floor ──
+  const floorToys = document.getElementById('floorToys');
+  // curated list: iconic Toy Story items with specific rotations & sizes
+  const scatteredToys = [
+    { emoji: '🤠', left:  3, rot: -22, size: 38, delay: 0.0 },   // Woody hat
+    { emoji: '🚀', left:  9, rot:  15, size: 34, delay: 0.3 },   // Buzz
+    { emoji: '🦕', left: 16, rot: -10, size: 40, delay: 0.6 },   // Rex
+    { emoji: '🐷', left: 23, rot:  28, size: 32, delay: 0.2 },   // Hamm
+    { emoji: '🎮', left: 30, rot: -18, size: 30, delay: 0.8 },   // game controller
+    { emoji: '🧸', left: 38, rot:   8, size: 36, delay: 0.4 },   // teddy bear
+    { emoji: '🎯', left: 45, rot: -30, size: 28, delay: 1.0 },   // dartboard / target
+    { emoji: '🐶', left: 52, rot:  20, size: 34, delay: 0.1 },   // Slinky Dog
+    { emoji: '⭐', left: 59, rot: -12, size: 30, delay: 0.7 },   // Sheriff star
+    { emoji: '🎪', left: 66, rot:  35, size: 32, delay: 0.5 },   // Circus tent (Lotso ref)
+    { emoji: '🔫', left: 73, rot: -25, size: 30, delay: 0.9 },   // Buzz laser/gun
+    { emoji: '🎠', left: 80, rot:  14, size: 36, delay: 0.3 },   // carousel toy
+    { emoji: '🎲', left: 87, rot: -20, size: 28, delay: 0.6 },   // dice / Mr Spell
+    { emoji: '🪆', left: 93, rot:  10, size: 32, delay: 0.2 },   // Russian doll / Babushka
+  ];
+
+  scatteredToys.forEach(t => {
+    const el = document.createElement('div');
+    el.className = 'floor-toy';
+    el.textContent = t.emoji;
+    el.style.cssText = `
+      left: ${t.left}%;
+      font-size: ${t.size}px;
+      --rot: ${t.rot}deg;
+      transform: rotate(${t.rot}deg);
+      animation: toyRest ${2.5 + Math.random() * 2}s ease-in-out ${t.delay}s infinite;
+      filter: drop-shadow(2px 5px 4px rgba(0,0,0,0.38));
+    `;
+    floorToys.appendChild(el);
+  });
 }
 
 /* ============================================
